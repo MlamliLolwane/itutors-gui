@@ -1,13 +1,335 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: rgb(247, 241, 241) !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+p {
+  font-weight: lighter !important;
+  font-size: 15px !important;
+  color: #323335 !important;
+}
+
+/* .dark-background{
+  background-color: "#19191D" !important; 
+  height: "100vh" !important
+} */
+
+.background-image {
+  background-image: url('./assets/images/Pink-smoke2.jpg');
+  background-size: cover;
+}
+
+.nav-item {
+  font-weight: lighter;
+}
+
+.modal-header {
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  padding-left: 1rem !important
+}
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+
+
+/* Input fields */
+
+.form-control {
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  color: #e3e8ee !important;
+  background-color: transparent !important;
+  font-weight: lighter !important;
+}
+
+.form-control:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: none !important;
+  color: #e3e8ee !important;
+  background-color: transparent;
+  font-weight: lighter;
+}
+
+
+.form-control::placeholder {
+  color: #e3e8ee !important;
+  opacity: .7;
+  font-weight: lighter;
+}
+
+/* Buttons */
+
+.btn-primary {
+  color: #fff;
+  background-color: rgb(83, 199, 83) !important;
+  border-color: rgb(83, 199, 83) !important;
+  border-radius: 50em !important;
+}
+
+.form-select {
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  color: #e3e8ee !important;
+  background-color: transparent !important;
+}
+
+.form-select:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: none !important;
+  color: #e3e8ee !important;
+  background-color: transparent;
+  font-weight: lighter;
+}
+
+select option {
+  background-color: black !important;
+}
+
+.headings{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.paragraphs{
+  font-weight: 20px;
+}
+
+/* Form container */
+
+.left-form-container {
+  visibility: hidden;
+}
+
+.right-form-container {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: black !important;
+}
+
+@media (min-width: 768px) {
+  .left-form-container {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    visibility: initial;
+  }
+
+  .paragraphs{
+    font-size: 23px
+  }
+
+  .right-form-container {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .headings {
+    font-weight: 800;
+    font-size: 45px
+  }
+}
+
+/* Search results */
+
+.outer-border {
+  border-top: 1px solid #cad1d6;
+  border-bottom: 1px solid #cad1d6;
+}
+
+.ratings {
+  color: #ce8730 !important;
+  font-size: 16px !important;
+  font-weight: bolder;
+}
+
+.image-resize {
+  max-height: 150px !important;
+  width: 100% !important;
+  object-fit: cover;
+}
+
+.link-button {
+  cursor: pointer;
+  background-color: transparent !important;
+  border: transparent !important;
+  font-size: 20px !important;
+}
+
+.link-button:hover {
+  cursor: pointer;
+  background-color: transparent !important;
+  border: transparent !important
+}
+
+.hoverable {
+  cursor: pointer;
+}
+
+/* Full height div */
+
+.full-height {
+  height: 100vh;
+}
+
+.hero-background {
+  background: rgb(19, 26, 58);
+  background: linear-gradient(229deg, rgba(19, 26, 58, 1) 0%, rgba(19, 26, 58, 1) 42%, rgba(66, 77, 124, 1) 100%);
+}
+
+.hero {
+  min-height: 600px;
+  width: 100vw;
+  background: black;
+  overflow: hidden;
+}
+
+.image-hero {
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+/* User Profile */
+
+.profile-outer-border {
+  background-color: #25252B !important;
+  color: #cad1d6 !important
+}
+
+.text-cream {
+  color: #cad1d6 !important
+}
+
+.text-light-cream {
+  color: #7d8488 !important;
+  font-size: 13.5px !important;
+}
+
+.profile-image {
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label {
+  color: #e3e8ee !important;
+}
+
+
+/* User Profile 2 */
+.big-profile-picture {
+  margin: 0 auto;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 100px;
+}
+
+.profile-picture {
+  border-radius: 100%;
+  overflow: hidden;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.clear {
+  clear: both;
+}
+
+/* Multi select */
+.select__placeholder {
+  color: white !important;
+}
+
+.select__control--menu-is-open {
+  border-top: 0px !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+  border-color: #e3e8ee !important;
+  box-shadow: none !important;
+}
+
+.select__control--is-focused {
+  box-shadow: none !important;
+  border-color: #e3e8ee !important;
+}
+
+.select__control {
+  border-color: #e3e8ee !important;
+}
+
+
+/* System Admin Table */
+
+.table-dark {
+  border-color: none !important;
+  border-width: 0px !important;
+}
+
+thead {
+  font-size: 16px !important;
+  font-weight: normal !important;
+}
+
+th {
+  background-color: #19191D !important;
+  border-bottom: none !important;
+}
+
+tr {
+  border-color: #19191D !important;
+  border-width: 5px !important;
+  background-color: #25252B !important;
+  font-weight: lighter !important;
+  color: #cad1d6 !important;
+  font-size: 15px !important;
+}
+
+td {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important
+}
+
+
+/* Modal */
+.modal-close {
+  background-color: black !important;
+  border: none !important
+}
+
+
+/* Background overlay for spinners */
+.overlay {
+  position: relative;
+}
+
+.overlay:after {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
