@@ -14,9 +14,9 @@ const cancelTutoringRequests = formData => {
 
 
 const StudentTutoringRequestService = {
-    list_tutoring_requests,
-    acceptRequest,
-    rejectRequest
+    studentListTutoringRequests,
+    createTutoringRequest,
+    cancelTutoringRequests
 }
 
 export default StudentTutoringRequestService;

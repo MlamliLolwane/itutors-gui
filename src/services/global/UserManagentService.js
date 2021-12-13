@@ -9,7 +9,7 @@ const login = formData => {
 }
 
 const logoff = () => {
-    return axios.put('logoff')
+    return axios.put('/logoff')
 }
 
 const emailVerification = formData => {

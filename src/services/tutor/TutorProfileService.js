@@ -17,11 +17,11 @@ const destroy = formData => {
 }
 
 
-const UserManagementService = {
+const TutorProfileService = {
     show,
     store,
     update,
     destroy
 }
 
-export default LearnerProfileService;
+export default TutorProfileService;

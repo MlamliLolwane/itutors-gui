@@ -18,7 +18,10 @@ const deleteUniversityModule = formData => {
 
 
 const UniversityModuleService = {
-    showTutoringRequest,
+    listUniversityModules,
+    createUniversityModule,
+    updateUniversityModule,
+    deleteUniversityModule
 }
 
 export default UniversityModuleService;

@@ -19,6 +19,9 @@ const deleteSchoolSubject = formData => {
 
 const SchoolSubjectService = {
     listSchoolSubjects,
+    createSchoolSubject,
+    updateSchoolSubject,
+    deleteSchoolSubject
 }
 
 export default SchoolSubjectService;
