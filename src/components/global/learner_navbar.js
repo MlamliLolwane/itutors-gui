@@ -34,11 +34,11 @@ function Navbar(props) {
                         <div>
 
                             <div className="d-inline">
-                                <Link to="/" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                                <Link to="/signup" className="btn btn-primary">
                                     SIGN UP</Link>
                             </div>
                             <div className="d-inline mx-2">
-                                <Link to="/login" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <Link to="/login" className="btn btn-primary">
                                     LOGIN</Link>
                             </div>
                         </div>
