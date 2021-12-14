@@ -1,9 +1,9 @@
-import Navbar from '../../components/global/learner_navbar'
+import Navbar from '../../../components/global/learner_navbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
 import { Link } from 'react-router-dom'
 
-function Login() {
+function UpdateTutorProfile() {
     return (
         <LoadingOverlay
             active={false}
@@ -26,11 +26,11 @@ function Login() {
                             style={{ backgroundColor: "#141414", borderRadius: "25px", border: "1px solid #ced4da" }}>
 
                             <h6 className="ps-md-3 pb-2 text-white text-secondary text-left pt-3">
-                                LOGIN</h6>
+                                UPDATE PROFILE</h6>
 
                             <div className="mb-0">
                                 <p className="text-white">
-                                    Welcome back to iTutors, we are happy to see you again. Login to access your account.
+                                    Update your profile so that prospective students can get to know you.
                         </p>
                             </div>
                             <form className="px-4">
@@ -39,31 +39,44 @@ function Login() {
                                         <div className="form-floating">
                                             <input className="form-control ps-3" id="email"
                                                 placeholder=" " type="email" />
-                                            <label htmlFor="role" className="text-white">Email Address</label>
+                                            <label htmlFor="role" className="text-white">First Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="row justify-content-center mb-2">
+                                    <div className="col">
+                                        <div className="form-floating">
+                                            <input className="form-control ps-3" id="email"
+                                                placeholder=" " type="email" />
+                                            <label htmlFor="role" className="text-white">Last Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="row justify-content-center mb-2">
+                                    <div className="col">
+                                        <div className="form-floating">
+                                            <input className="form-control ps-3" id="email"
+                                                placeholder=" " type="email" />
+                                            <label htmlFor="role" className="text-white">Job Title</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="row justify-content-center mb-3">
                                     <div className="col">
-                                        <div className="form-floating">
-                                            <input className="form-control ps-3" id="password"
-                                                placeholder=" " type="password" />
-                                            <label htmlFor="role" className="text-white">Password</label>
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder=" " id="floatingTextarea2" style={{height: "100px"}}></textarea>
+                                            <label for="floatingTextarea2">Short Description Of Yourself</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="text-center mb-3" >
                                     <button type="submit"
-                                        className="btn btn-primary">SIGN UP</button>
+                                        className="btn btn-primary">UPDATE PROFILE</button>
                                 </div>
-
-                                <p className="fw-bold">
-                                    <Link to="/forgot-password" className="nav-link text-white" aria-current="page"><u>
-                                        Forgot Password?
-                                    </u></Link>
-                                </p>
                             </form>
                         </div>
                     </div>
@@ -73,4 +86,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default UpdateTutorProfile;

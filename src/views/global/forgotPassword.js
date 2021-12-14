@@ -1,9 +1,8 @@
 import Navbar from '../../components/global/learner_navbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
-import { Link } from 'react-router-dom'
 
-function Login() {
+function ForgotPassword() {
     return (
         <LoadingOverlay
             active={false}
@@ -26,15 +25,15 @@ function Login() {
                             style={{ backgroundColor: "#141414", borderRadius: "25px", border: "1px solid #ced4da" }}>
 
                             <h6 className="ps-md-3 pb-2 text-white text-secondary text-left pt-3">
-                                LOGIN</h6>
+                                RECOVER ACCOUNT</h6>
 
                             <div className="mb-0">
                                 <p className="text-white">
-                                    Welcome back to iTutors, we are happy to see you again. Login to access your account.
+                                    Forgot your password? Enter the email address you used to sign up and we will help you recover your account.
                         </p>
                             </div>
                             <form className="px-4">
-                                <div className="row justify-content-center mb-2">
+                                <div className="row justify-content-center mb-3">
                                     <div className="col">
                                         <div className="form-floating">
                                             <input className="form-control ps-3" id="email"
@@ -44,26 +43,10 @@ function Login() {
                                     </div>
                                 </div>
 
-                                <div className="row justify-content-center mb-3">
-                                    <div className="col">
-                                        <div className="form-floating">
-                                            <input className="form-control ps-3" id="password"
-                                                placeholder=" " type="password" />
-                                            <label htmlFor="role" className="text-white">Password</label>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div className="text-center mb-3" >
                                     <button type="submit"
-                                        className="btn btn-primary">SIGN UP</button>
+                                        className="btn btn-primary">RECOVER ACCOUNT</button>
                                 </div>
-
-                                <p className="fw-bold">
-                                    <Link to="/forgot-password" className="nav-link text-white" aria-current="page"><u>
-                                        Forgot Password?
-                                    </u></Link>
-                                </p>
                             </form>
                         </div>
                     </div>
@@ -73,4 +56,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default ForgotPassword;
