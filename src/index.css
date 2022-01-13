@@ -41,12 +41,12 @@ p {
 
 /* Input fields */
 
-.form-control {
+.form-control:not(textarea){
   border-radius: 0 !important;
   border-left: none !important;
   border-right: none !important;
   border-top: none !important;
-  color: #e3e8ee !important;
+  color: #b5d4fa !important;
   background-color: transparent !important;
   font-weight: lighter !important;
 }
@@ -65,6 +65,12 @@ p {
   color: #e3e8ee !important;
   opacity: .7;
   font-weight: lighter;
+}
+
+textarea{
+  background-color: transparent !important;
+  color:  #b5d4fa !important;
+  font-weight: lighter !important;
 }
 
 /* Buttons */
