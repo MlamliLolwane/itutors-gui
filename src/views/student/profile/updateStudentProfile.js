@@ -6,7 +6,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 //import UserManagementService from '../../services/global/UserManagentService'
 
-function UpdateTutorProfile() {
+function UpdateStudentProfile() {
     const [isActive, setActive] = React.useState(false);
     return (
         <Formik
@@ -14,7 +14,7 @@ function UpdateTutorProfile() {
             initialValues={{
                 first_name: 'Mlamli',
                 last_name: 'Lolwane',
-                job_title: 'Software Developer',
+                study_level: 'Software Developer',
                 description: 'Founder and CEO at iTutors.',
             }}
 
@@ -24,7 +24,7 @@ function UpdateTutorProfile() {
 
                 last_name: Yup.string().required('Last Name Required'),
 
-                job_title: Yup.string().required('Job Title Required'),
+                study_level: Yup.string().required('Job Title Required'),
 
                 description: Yup.string(),
 
@@ -73,7 +73,7 @@ function UpdateTutorProfile() {
                                 </h6>
                                 <div className="mb-0">
                                     <p className="text-white">
-                                        Update your profile so that prospective students can ge                             t to know you.
+                                        Update your profile so that tutors can get to know you.
                         </p>
                                 </div>
 
@@ -93,7 +93,7 @@ function UpdateTutorProfile() {
                                         </div>
                                     </div>
 
-                                    <div className="row justify-content-center mb-2">
+                                    <div className="row justify-content-center mb-4">
                                         <div className="col">
                                             <div className="form-floating">
                                                 <Field className="form-control ps-3" name="last_name"
@@ -107,44 +107,50 @@ function UpdateTutorProfile() {
                                     </div>
 
 
-                                    <div className="row justify-content-center mb-4">
+                                    <div className="row mb-4">
                                         <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="job_title"
-                                                    placeholder=" " type="text" />
-
-                                                <label htmlFor="job_title" className="text-white">Job Title</label>
-                                                <ErrorMessage name="job_title" />
+                                        <div className="form-floating">
+                                        <label htmlFor="first_name" className="text-white float-label">Study Level</label>
+                                        </div>
+                                            <br/>
+                                            <div class="form-check form-check-inline float-start mt-2 ms-2">
+                                                <Field className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                                                <label className="form-check-label" for="inlineRadio1">School Learner</label>
+                                            </div>
+                                            <div class="form-check form-check-inline float-start mt-2">
+                                                <Field className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                                                <label className="form-check-label" for="inlineRadio2">Tertiary Student</label>
                                             </div>
                                         </div>
                                     </div>
+                            
 
-                                    <div className="row justify-content-center mb-3">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="description"
-                                                    placeholder=" " as="textarea" style={{ height: "100px" }} />
+                                <div className="row justify-content-center mb-3">
+                                    <div className="col">
+                                        <div className="form-floating">
+                                            <Field className="form-control ps-3" name="description"
+                                                placeholder=" " as="textarea" style={{ height: "100px" }} />
 
-                                                <label htmlFor="description" className="text-white">Short Description of Yourself</label>
-                                                <ErrorMessage name="description" />
-                                            </div>
+                                            <label htmlFor="description" className="text-white">Short Description of Yourself</label>
+                                            <ErrorMessage name="description" />
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div className="text-center mb-3" >
-                                        <button type="submit"
-                                            className="btn btn-primary">UPDATE PROFILE</button>
-                                    </div>
+                                <div className="text-center mb-3" >
+                                    <button type="submit"
+                                        className="btn btn-primary">UPDATE PROFILE</button>
+                                </div>
 
                                 </Form>
-                                {/* End of Formik Form */}
-                            </div>
+                            {/* End of Formik Form */}
                         </div>
                     </div>
                 </div>
+                </div>
             </LoadingOverlay>
-        </Formik>
+        </Formik >
     );
 }
 
-export default UpdateTutorProfile;
+export default UpdateStudentProfile;

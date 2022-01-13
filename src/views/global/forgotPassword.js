@@ -12,7 +12,6 @@ function ForgotPassword() {
         <Formik
             initialValues={{
                 email: 'mrlolwane96@gmail.com',
-                password: 'Mlamli123',
             }}
 
             validationSchema={Yup.object({

@@ -12,7 +12,8 @@ function ChangePassword() {
         <Formik
 
             initialValues={{
-                password: 'Mlamli123',
+                current_password: 'Mlamli1243',
+                new_password: 'Mlamli123',
                 password_confirmation: 'Mlamli123'
             }}
 

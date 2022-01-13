@@ -14,6 +14,11 @@ import ChangePassword from './views/global/changePassword';
 import UpdateTutorProfile from './views/tutor/profile/updateTutorProfile';
 
 /**
+ * Student Routes
+ */
+import UpdateStudentProfile from './views/student/profile/updateStudentProfile';
+
+/**
  * Imports
  */
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -36,8 +41,13 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword/>} />
           <Route path="/update-password" element={<ChangePassword/>} />
 
+
           {/* Tutor Routes */}
           <Route path="/tutor/profile/update" element={<UpdateTutorProfile/>} />
+
+
+          {/* Student Routes */}
+          <Route path="/student/profile/update" element={<UpdateStudentProfile/>} />
 
         </Routes>
       </BrowserRouter>

@@ -41,7 +41,7 @@ p {
 
 /* Input fields */
 
-.form-control:not(textarea){
+.form-control:not(textarea) {
   border-radius: 0 !important;
   border-left: none !important;
   border-right: none !important;
@@ -67,13 +67,29 @@ p {
   font-weight: lighter;
 }
 
-textarea{
+textarea {
   background-color: transparent !important;
-  color:  #b5d4fa !important;
+  color: #b5d4fa !important;
   font-weight: lighter !important;
 }
 
+.float-label {
+  opacity: .65;
+  transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+}
+
 /* Buttons */
+
+.form-check-input:checked {
+  background-color: rgb(83, 199, 83) !important;
+  border-color:rgb(83, 199, 83) !important;
+}
+
+.form-check-input:focus {
+  border-color: none !important;
+  outline: 0;
+  box-shadow: none !important;
+}
 
 .btn-primary {
   color: #fff;
@@ -104,12 +120,12 @@ select option {
   background-color: black !important;
 }
 
-.headings{
+.headings {
   font-size: 25px;
   font-weight: 700;
 }
 
-.paragraphs{
+.paragraphs {
   font-weight: 20px;
 }
 
@@ -134,7 +150,7 @@ select option {
     visibility: initial;
   }
 
-  .paragraphs{
+  .paragraphs {
     font-size: 23px
   }
 
