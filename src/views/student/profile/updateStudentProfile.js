@@ -4,7 +4,7 @@ import HashLoader from 'react-spinners/HashLoader'
 import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-//import UserManagementService from '../../services/global/UserManagentService'
+import StudentProfileService from '../../../services/student/StudentProfileService'
 
 function UpdateStudentProfile() {
     const [isActive, setActive] = React.useState(false);
@@ -14,8 +14,8 @@ function UpdateStudentProfile() {
             initialValues={{
                 first_name: 'Mlamli',
                 last_name: 'Lolwane',
-                study_level: 'Software Developer',
-                description: 'Founder and CEO at iTutors.',
+                study_level: 'School',
+                description: 'Scholar at the Nelson Mandela University.',
             }}
 
             validationSchema={Yup.object({
@@ -34,9 +34,9 @@ function UpdateStudentProfile() {
                 try {
                     setActive(true);
 
-                    //const response = await UserManagementService.signup(values);
+                    const response = await StudentProfileService.store(values);
 
-                    //console.log(response);
+                    console.log(response);
 
                     setActive(false);
 
@@ -113,13 +113,13 @@ function UpdateStudentProfile() {
                                         <label htmlFor="first_name" className="text-white float-label">Study Level</label>
                                         </div>
                                             <br/>
-                                            <div class="form-check form-check-inline float-start mt-2 ms-2">
-                                                <Field className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-                                                <label className="form-check-label" for="inlineRadio1">School Learner</label>
+                                            <div className="form-check form-check-inline float-start mt-2 ms-2 ms-md-0">
+                                                <Field className="form-check-input" type="radio" name="study_level" value="School" />
+                                                <label className="form-check-label fw-light" for="inlineRadio1">School Learner</label>
                                             </div>
-                                            <div class="form-check form-check-inline float-start mt-2">
-                                                <Field className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                                <label className="form-check-label" for="inlineRadio2">Tertiary Student</label>
+                                            <div className="form-check form-check-inline float-start mt-2 ms-2 ms-md-0">
+                                                <Field className="form-check-input" type="radio" name="study_level" value="Tertiary" />
+                                                <label className="form-check-label fw-light" for="inlineRadio2">Tertiary Student</label>
                                             </div>
                                         </div>
                                     </div>

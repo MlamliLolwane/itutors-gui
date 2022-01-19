@@ -4,8 +4,9 @@ const signup = formData => {
     return axios.post('/signup', formData);
 }
 
-const login = formData => {
-    return axios.post('/login', formData);
+const login = async formData => {
+    await axios.get('http://localhost:8000/sanctum/csrf-cookie');
+    return await axios.post('/login', formData);
 }
 
 const logoff = () => {

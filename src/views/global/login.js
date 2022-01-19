@@ -1,7 +1,7 @@
 import Navbar from '../../components/global/learner_navbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -9,6 +9,8 @@ import UserManagementService from '../../services/global/UserManagentService'
 
 function Login() {
     const [isActive, setActive] = React.useState(false);
+    const navigate = useNavigate();
+
     return (
         <Formik
             initialValues={{
@@ -29,17 +31,31 @@ function Login() {
             onSubmit={async (values, { setSubmitting }) => {
                 try {
                     setActive(true);
+                    setSubmitting(true);
 
                     const response = await UserManagementService.login(values);
 
-                    console.log(response);
+                    switch (response.data.role) {
+                        case 'Student':
+                            setActive(false);
+                            setSubmitting(false);
+                            navigate('/student/home')
+                            break;
 
-                    setActive(false);
+                        case 'Tutor':
+                            setActive(false);
+                            setSubmitting(false);
+                            navigate('/tutor/home')
+                            break;
 
-                    setSubmitting(false);
+                        default:
+                            setActive(false);
+                            setSubmitting(false);
+                            break;
+                    }
                 } catch (error) {
                     setActive(false);
-                    console.log(error);
+                    //console.log(error);
                 }
             }}
 

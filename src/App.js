@@ -44,6 +44,8 @@ function App() {
 
           {/* Tutor Routes */}
           <Route path="/tutor/profile/update" element={<UpdateTutorProfile/>} />
+          <Route path="/tutor/signup" element={<SignUp/>} />
+          <Route path="/tutor/login" element={<Login/>} />
 
 
           {/* Student Routes */}

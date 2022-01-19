@@ -2,18 +2,23 @@ import Navbar from '../../components/global/learner_navbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import UserManagementService from '../../services/global/UserManagentService'
 
-function SignUp() {
+function SignUp(props) {
     const [isActive, setActive] = React.useState(false);
+    const navigate = useNavigate();
     return (
         <Formik
 
-            initialValues={{ email: 'mrlolwane96@gmail.com', 
-            password: 'Mlamli123', 
-            password_confirmation: 'Mlamli123' }}
+            initialValues={{
+                email: 'mrlolwane96@gmail.com',
+                password: 'Mlamli123',
+                password_confirmation: 'Mlamli123',
+                role: ''
+            }}
 
             validationSchema={Yup.object({
 
@@ -31,13 +36,47 @@ function SignUp() {
 
             onSubmit={async (values, { setSubmitting }) => {
                 try {
-                    setActive(true);                    
+                    setActive(true);
 
-                    const response = await UserManagementService.signup(values);
+                    setSubmitting(true);
 
-                    console.log(response);
+                    switch (window.location.pathname) {
+                        case "/signup":
+                            values.role = 'Student'
+                            break;
+
+                        case "/tutor/signup":
+                            values.role = 'Tutor'
+                            break;
+
+                        case "sysadmin/administrative/users/add/admin":
+                            values.role = 'Administrator'
+                            break;
+
+                        default:
+                            values.role = 'Undefined'
+                            break;
+                    }
+
+                    await UserManagementService.signup(values);
 
                     setActive(false);
+
+                    //Redirect to home page of user
+
+                    switch (values.role) {
+                        case "Student":
+                            navigate('/login');
+                            break;
+
+                        case "Tutor":
+                            navigate('/tutor/login');
+                            break;
+
+                        default: alert('An error occured. Please try again later.');
+                    }
+
+                    //console.log(window.location.pathname);
 
                     setSubmitting(false);
                 } catch (error) {
@@ -130,7 +169,7 @@ function SignUp() {
                     </div>
                 </div>
             </LoadingOverlay>
-        </Formik>
+        </Formik >
     );
 }
 
