@@ -4,30 +4,36 @@ import HashLoader from 'react-spinners/HashLoader'
 import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import TutorProfileService from '../../../services/tutor/TutorProfileService'
+import TutorAdvertisementService from '../../../services/tutor/TutorAdvertisementService'
 
-function UpdateTutorProfile() {
+function CreateTutorAdvertisement() {
     const [isActive, setActive] = React.useState(false);
     return (
         <Formik
 
             initialValues={{
+                title: "One on one C# Tutorial",
+                content: 'I will have a one on one session to teach you any topic you want in C#. I have been a C# developer for the past 6 years.',
+                price: 200.00,
+                duration: 60,
+                max_participants: 1,
                 tutor_id: 1,
-                first_name: 'Mlamli',
-                last_name: 'Lolwane',
-                job_title: 'Software Developer',
-                description: 'Founder and CEO at iTutors.',
+                subject_id: 1
             }}
 
             validationSchema={Yup.object({
 
-                first_name: Yup.string().required('First Name Required'),
+                title: Yup.string().required('Advertisement Title Required'),
 
-                last_name: Yup.string().required('Last Name Required'),
+                content: Yup.string().required('Advertisement Content Required'),
 
-                job_title: Yup.string().required('Job Title Required'),
+                price: Yup.number().required('Job Title Required'),
 
-                description: Yup.string(),
+                duration: Yup.number().required('Tutoring Session Duration Required'),
+
+                max_participants: Yup.number().min(1).max(5),
+
+                subject_id: Yup.number().required('Subject You Will Be Tutoring Required'),
 
             })}
 
@@ -35,7 +41,7 @@ function UpdateTutorProfile() {
                 try {
                     setActive(true);
 
-                    const response = await TutorProfileService.store(values);
+                    const response = await TutorAdvertisementService.store(values);
 
                     console.log(response);
 
@@ -70,12 +76,11 @@ function UpdateTutorProfile() {
                                 style={{ backgroundColor: "#141414", borderRadius: "25px", border: "1px solid #ced4da" }}>
 
                                 <h6 className="ps-md-3 pb-2 text-white text-secondary text-left pt-3">
-                                    UPDATE PROFILE
+                                    CREATE ADVERTISEMENT
                                 </h6>
                                 <div className="mb-0">
                                     <p className="text-white">
-                                        Update your profile so that prospective students can ge                             t to know you.
-                        </p>
+                                        Create an advertisement, put it out there and then make money.</p>
                                 </div>
 
                                 {/* Formik Form */}
@@ -84,38 +89,13 @@ function UpdateTutorProfile() {
                                     <div className="row justify-content-center mb-2">
                                         <div className="col">
                                             <div className="form-floating">
-                                                <Field name="first_name" type="text" className="form-control ps-3"
+                                                <Field name="title" type="text" className="form-control ps-3"
                                                     placeholder=" " />
 
-                                                <label htmlFor="first_name" className="text-white">First Name</label>
+                                                <label htmlFor="title" className="text-white">
+                                                    Advertisement Title</label>
 
-                                                <ErrorMessage name="first_name" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row justify-content-center mb-2">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="last_name"
-                                                    placeholder=" " type="text" />
-
-                                                <label htmlFor="last_name" className="text-white">Last Name</label>
-
-                                                <ErrorMessage name="last_name" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div className="row justify-content-center mb-4">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="job_title"
-                                                    placeholder=" " type="text" />
-
-                                                <label htmlFor="job_title" className="text-white">Job Title</label>
-                                                <ErrorMessage name="job_title" />
+                                                <ErrorMessage name="title" />
                                             </div>
                                         </div>
                                     </div>
@@ -123,18 +103,60 @@ function UpdateTutorProfile() {
                                     <div className="row justify-content-center mb-3">
                                         <div className="col">
                                             <div className="form-floating">
-                                                <Field className="form-control ps-3" name="description"
+                                                <Field className="form-control ps-3" name="content"
                                                     placeholder=" " as="textarea" style={{ height: "100px" }} />
 
-                                                <label htmlFor="description" className="text-white">Short Description of Yourself</label>
-                                                <ErrorMessage name="description" />
+                                                <label htmlFor="content" className="text-white">
+                                                    Advertisement Content</label>
+                                                <ErrorMessage name="content" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="row justify-content-center mb-2">
+                                        <div className="col">
+                                            <div className="form-floating">
+                                                <Field className="form-control ps-3" name="price"
+                                                    placeholder=" " type="number" />
+
+                                                <label htmlFor="price" className="text-white">Price</label>
+
+                                                <ErrorMessage name="price" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="row justify-content-center mb-3">
+                                        <div className="col">
+                                            <div className="form-floating">
+                                                <Field className="form-control ps-3" name="duration"
+                                                    placeholder=" " type="number" />
+
+                                                <label htmlFor="duration" className="text-white">
+                                                    Session Duration (Minutes)</label>
+                                                <ErrorMessage name="duration" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="row justify-content-center mb-3">
+                                        <div className="col">
+                                            <div className="form-floating">
+                                                <Field className="form-control ps-3" name="max_participants"
+                                                    placeholder=" " type="number" />
+
+                                                <label htmlFor="max_participants" className="text-white">
+                                                    Maximum Participants
+                                                </label>
+                                                <ErrorMessage name="max_participants" />
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="text-center mb-3" >
                                         <button type="submit"
-                                            className="btn btn-primary">UPDATE PROFILE</button>
+                                            className="btn btn-primary">CREATE ADVERTISEMENT</button>
                                     </div>
 
                                 </Form>
@@ -145,7 +167,7 @@ function UpdateTutorProfile() {
                 </div>
             </LoadingOverlay>
         </Formik>
-    );
+    )
 }
 
-export default UpdateTutorProfile;
+export default CreateTutorAdvertisement;

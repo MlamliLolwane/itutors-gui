@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const list = () => {
-    return axios.get('/tutor/advertisement/list', formData);
+    return axios.get('/tutor/advertisement/list');
 }
 
 const show = formData => {

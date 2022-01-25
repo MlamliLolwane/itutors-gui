@@ -12,11 +12,13 @@ import ChangePassword from './views/global/changePassword';
  * Tutor Routes
  */
 import UpdateTutorProfile from './views/tutor/profile/updateTutorProfile';
+import CreateTutorAdvertisement from './views/tutor/advertisements/createTutorAdvertisement';
 
 /**
  * Student Routes
  */
 import UpdateStudentProfile from './views/student/profile/updateStudentProfile';
+import ViewStudentProfile from './views/student/profile/viewStudentProfile';
 
 /**
  * Imports
@@ -46,10 +48,12 @@ function App() {
           <Route path="/tutor/profile/update" element={<UpdateTutorProfile/>} />
           <Route path="/tutor/signup" element={<SignUp/>} />
           <Route path="/tutor/login" element={<Login/>} />
+          <Route path="/tutor/advertisements/create" element={<CreateTutorAdvertisement/>} />
 
 
           {/* Student Routes */}
           <Route path="/student/profile/update" element={<UpdateStudentProfile/>} />
+          <Route path="/student/profile/view" element={<ViewStudentProfile/>} />
 
         </Routes>
       </BrowserRouter>
