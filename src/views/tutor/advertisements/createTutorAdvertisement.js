@@ -18,7 +18,7 @@ function CreateTutorAdvertisement() {
                 duration: 60,
                 max_participants: 1,
                 tutor_id: 1,
-                subject_id: 1
+                subject_id: "ONT1000"
             }}
 
             validationSchema={Yup.object({
@@ -33,7 +33,7 @@ function CreateTutorAdvertisement() {
 
                 max_participants: Yup.number().min(1).max(5),
 
-                subject_id: Yup.number().required('Subject You Will Be Tutoring Required'),
+                subject_id: Yup.string().required('Subject You Will Be Tutoring Required'),
 
             })}
 
@@ -86,7 +86,7 @@ function CreateTutorAdvertisement() {
                                 {/* Formik Form */}
                                 <Form>
 
-                                    <div className="row justify-content-center mb-2">
+                                    <div className="row justify-content-center mb-4">
                                         <div className="col">
                                             <div className="form-floating">
                                                 <Field name="title" type="text" className="form-control ps-3"
@@ -140,7 +140,7 @@ function CreateTutorAdvertisement() {
                                         </div>
                                     </div>
 
-                                    <div className="row justify-content-center mb-3">
+                                    <div className="row justify-content-center mb-4">
                                         <div className="col">
                                             <div className="form-floating">
                                                 <Field className="form-control ps-3" name="max_participants"

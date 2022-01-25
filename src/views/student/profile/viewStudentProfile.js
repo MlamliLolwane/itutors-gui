@@ -2,9 +2,8 @@ import Navbar from '../../../components/global/learner_navbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
 import React from 'react'
-import StudentProfileService from '../../../services/student/StudentProfileService'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
+// import StudentProfileService from '../../../services/student/StudentProfileService'
+import { Formik, Field } from 'formik'
 
 function ViewStudentProfile() {
     const [isActive, setActive] = React.useState(false);
