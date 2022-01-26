@@ -67,10 +67,10 @@ function Dashboard() {
                 </div>
                 <div className="row">
                     <div className="col-7 px-md-4" >
-                        <div className="card" style={{ minHeight: "50vh" }}>
+                        <div className="card d-flex" style={{ minHeight: "50vh" }}>
                             <div className="card-body">
                                 <p className="card-title d-flex"><b>UPCOMING SESSIONS</b></p>
-                                <h5 className="card-text d-flex"></h5>
+                                <h5 className="card-text">1</h5>
                             </div>
                         </div>
                     </div>

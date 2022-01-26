@@ -24,26 +24,26 @@ function Navbar(props) {
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 miscellaneous
-                                </a>
+                                </Link>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">About Us</a></li>
-                                    <li><a class="dropdown-item" href="#">Tutorials</a></li>
-                                    <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                                    <li><Link class="dropdown-item" >About Us</Link></li>
+                                    <li><Link class="dropdown-item" >Tutorials</Link></li>
+                                    <li><Link class="dropdown-item" >Contact Us</Link></li>
                                 </ul>
                             </li>
                         </ul>
 
                         <div className="d-inline navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Mlamli Lolwane
-                                </a>
+                                </Link>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><Link to='/tutor/profile/update' class="dropdown-item">Profile</Link></li>
-                                    <li><a class="dropdown-item" href="#">Account Settings</a></li>
-                                    <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                                    <li><Link class="dropdown-item" >Account Settings</Link></li>
+                                    <li><Link class="dropdown-item" >Sign Out</Link></li>
                                 </ul>
                             </li>
                             </div>
