@@ -28,9 +28,9 @@ function Navbar(props) {
                                 miscellaneous
                                 </Link>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link class="dropdown-item" >About Us</Link></li>
-                                    <li><Link class="dropdown-item" >Tutorials</Link></li>
-                                    <li><Link class="dropdown-item" >Contact Us</Link></li>
+                                    <li><Link to="/" class="dropdown-item" >About Us</Link></li>
+                                    <li><Link to="/" class="dropdown-item" >Tutorials</Link></li>
+                                    <li><Link to="/" class="dropdown-item" >Contact Us</Link></li>
                                 </ul>
                             </li>
                         </ul>
@@ -42,8 +42,8 @@ function Navbar(props) {
                                 </Link>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><Link to='/tutor/profile/update' class="dropdown-item">Profile</Link></li>
-                                    <li><Link class="dropdown-item" >Account Settings</Link></li>
-                                    <li><Link class="dropdown-item" >Sign Out</Link></li>
+                                    <li><Link to="/" class="dropdown-item" >Account Settings</Link></li>
+                                    <li><Link to="/" class="dropdown-item" >Sign Out</Link></li>
                                 </ul>
                             </li>
                             </div>
