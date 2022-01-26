@@ -82,7 +82,7 @@ textarea {
 
 .form-check-input:checked {
   background-color: rgb(83, 199, 83) !important;
-  border-color:rgb(83, 199, 83) !important;
+  border-color: rgb(83, 199, 83) !important;
 }
 
 .form-check-input:focus {
@@ -354,4 +354,17 @@ td {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Dashboard */
+.dashboard-card {
+  background-color: #141414 !important;
+  border-radius: 25px !important;
+  border: 1px solid #ced4da !important
+}
+
+.text-green{
+  color:  rgb(83, 199, 83) !important;
 }

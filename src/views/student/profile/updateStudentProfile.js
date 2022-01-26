@@ -1,4 +1,4 @@
-import Navbar from '../../../components/global/learner_navbar'
+import Navbar from '../../../components/global/learnerNavbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
 import React from 'react'

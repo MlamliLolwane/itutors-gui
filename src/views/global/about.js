@@ -1,4 +1,4 @@
-import Navbar from '../../components/global/learner_navbar'
+import Navbar from '../../components/global/learnerNavbar'
 
 function About()
 {

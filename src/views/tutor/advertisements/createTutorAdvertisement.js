@@ -1,4 +1,4 @@
-import Navbar from '../../../components/global/learner_navbar'
+import Navbar from '../../../components/tutor/tutorNavbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
 import React from 'react'
@@ -68,7 +68,7 @@ function CreateTutorAdvertisement() {
             >
                 <div>
                     <Navbar />
-
+                    
                     <hr className="my-0 py-0" />
                     <div className="row">
                         <div style={{ minHeight: "100vh", backgroundColor: "black" }} className="col justify-content-md-center px-0 d-flex align-items-center">
