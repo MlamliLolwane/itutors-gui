@@ -317,20 +317,21 @@ thead {
 }
 
 th {
-  background-color: #19191D !important;
+  background-color: white !important;
   border-bottom: none !important;
 }
 
 tr {
-  border-color: #19191D !important;
-  border-width: 5px !important;
-  background-color: #25252B !important;
+  border-color: white !important;
+  border-width: 1px !important;
+  background-color: white !important;
   font-weight: lighter !important;
-  color: #cad1d6 !important;
+  color: black !important;
   font-size: 15px !important;
 }
 
 td {
+  text-align: left !important;
   padding-top: 20px !important;
   padding-bottom: 20px !important
 }
