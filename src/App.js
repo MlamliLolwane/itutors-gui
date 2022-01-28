@@ -11,8 +11,10 @@ import ChangePassword from './views/global/changePassword';
 /**
  * Tutor Routes
  */
+import ViewTutorProfile from './views/tutor/profile/viewTutorProfile';
 import UpdateTutorProfile from './views/tutor/profile/updateTutorProfile';
 import CreateTutorAdvertisement from './views/tutor/advertisements/createTutorAdvertisement';
+import ListTutorAdvertisements from './views/tutor/advertisements/listTutorAdvertisements';
 import TutorDashboard from './views/tutor/dashboard';
 
 /**
@@ -47,10 +49,13 @@ function App() {
 
           {/* Tutor Routes */}
           <Route path="/tutor/dashboard" element={<TutorDashboard/>} />
+          <Route path="/tutor/profile/view" element={<ViewTutorProfile/>} />
           <Route path="/tutor/profile/update" element={<UpdateTutorProfile/>} />
           <Route path="/tutor/signup" element={<SignUp/>} />
           <Route path="/tutor/login" element={<Login/>} />
+          <Route path="/tutor/advertisements/list" element={<ListTutorAdvertisements/>} />
           <Route path="/tutor/advertisements/create" element={<CreateTutorAdvertisement/>} />
+          
 
 
           {/* Student Routes */}

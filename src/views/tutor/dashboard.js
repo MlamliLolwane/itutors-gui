@@ -1,10 +1,41 @@
 import Navbar from "../../components/tutor/tutorNavbar"
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
-import React from 'react'
+import React, { useEffect } from 'react'
+import ApexCharts from 'apexcharts'
 
 function Dashboard() {
     const [isActive, setActive] = React.useState(false);
+
+    var options = {
+        chart: {
+            type: 'line'
+        },
+        series: [{
+            name: 'sales',
+            data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+        }],
+        xaxis: {
+            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+        }
+    }
+
+    let pie_options = {
+        chart: {
+            type: 'donut'
+          },
+        series: [44, 55, 13, 33],
+        labels: ['Social Media', 'Search Engine', 'Direct Click', 'Referrals']
+      }
+
+    useEffect(() => {
+        var chart = new ApexCharts(document.getElementById('chart'), options);
+        var pie_chart = new ApexCharts(document.getElementById('pie_chart'), pie_options);
+
+        chart.render();
+        pie_chart.render();
+    })
+
     return (
         <LoadingOverlay
             active={isActive}
@@ -23,8 +54,8 @@ function Dashboard() {
                 <br />
                 <div className="row">
                     <div className="col">
-                    <h6 className="ps-md-3 pb-2 text-white text-secondary pt-3">
-                        DASHBOARD
+                        <h6 className="ps-md-3 pb-2 text-white text-secondary pt-3">
+                            DASHBOARD
                 </h6>
                     </div>
                 </div>
@@ -32,45 +63,50 @@ function Dashboard() {
                 <div className="row mt-3 mb-5">
                     <div className="col-10 col-md-3 px-md-4">
                         <div className="card">
-                            <div className="card-body dashboard-card">
-                                <p className="card-title text-white"><b>NUMBER OF ADS</b></p>
-                                <h5 className="card-text text-white">5</h5>
+                            <div className="card-body ">
+                                <h5 className="card-title text-green"><b>5</b></h5>
+                                <p className="card-text font-small-headings fw-bolder text-grey">
+                                    NUMBER OF ADS</p>
                             </div>
                         </div>
                     </div>
                     <div className="col-10 col-md-3 px-md-4">
                         <div className="card">
-                            <div className="card-body dashboard-card">
-                                <p className="card-title text-white"><b>REVENUE GENERATED</b></p>
-                                <h5 className="card-text text-white">R800,00</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-10 col-md-3 px-md-4">
-                        <div className="card">
-                            <div className="card-body dashboard-card">
-                                <p className="card-title text-white"><b>PENDING REQUESTS</b></p>
-                                <h5 className="card-text text-white">2</h5>
+                            <div className="card-body ">
+                                <h5 className="card-title text-green"><b>R800,00</b></h5>
+                                <p className="card-text font-small-headings fw-bolder text-grey">
+                                    REVENUE GENERATED</p>
                             </div>
                         </div>
                     </div>
 
                     <div className="col-10 col-md-3 px-md-4">
                         <div className="card">
-                            <div className="card-body dashboard-card">
-                                <p className="card-title text-white"><b>UPCOMING SESSIONS</b></p>
-                                <h5 className="card-text text-white">1</h5>
+                            <div className="card-body ">
+                                <h5 className="card-title text-green"><b>2</b></h5>
+                                <p className="card-text font-small-headings fw-bolder text-grey">
+                                    PENDING REQUESTS</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-10 col-md-3 px-md-4">
+                        <div className="card">
+                            <div className="card-body ">
+                                <h5 className="card-title text-green"><b>1</b></h5>
+                                <p className="card-text font-small-headings fw-bolder text-grey">UPCOMING SESSIONS</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-7 px-md-4" >
-                        <div className="card d-flex" style={{ minHeight: "50vh" }}>
+                        <div className="card" style={{ minHeight: "50vh" }}>
                             <div className="card-body">
-                                <p className="card-title d-flex"><b>UPCOMING SESSIONS</b></p>
-                                <h5 className="card-text">1</h5>
+                                <p className="card-title fw-bolder">
+                                    REVENUE GENERATED</p>
+                                <div id="chart">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -78,8 +114,9 @@ function Dashboard() {
                     <div className="col-5 px-md-4">
                         <div className="card" style={{ minHeight: "50vh" }}>
                             <div className="card-body">
-                                <p className="card-title"><b>UPCOMING SESSIONS</b></p>
-                                <h5 className="card-text">1</h5>
+                                <p className="card-title fw-bolder"><b>TRAFFIC SOURCE</b></p>
+                                <div id="pie_chart">
+                                </div>
                             </div>
                         </div>
                     </div>

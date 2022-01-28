@@ -18,6 +18,10 @@ p {
   height: "100vh" !important
 } */
 
+.font-small-headings{
+  font-size: 12px !important;
+}
+
 .background-image {
   background-image: url('./assets/images/Pink-smoke2.jpg');
   background-size: cover;
@@ -367,4 +371,16 @@ td {
 
 .text-green{
   color:  rgb(83, 199, 83) !important;
+}
+
+.text-grey{
+  color: rgb(83, 81, 81) !important
+}
+
+
+
+/* Charts */
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
 }
