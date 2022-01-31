@@ -72,7 +72,7 @@ function CreateTutorAdvertisement() {
                     <hr className="my-0 py-0" />
                     <div className="row">
                         <div style={{ minHeight: "100vh", backgroundColor: "black" }} className="col justify-content-md-center px-0 d-flex align-items-center">
-                            <div className="col-lg-5 col-11 col-md-8 mx-auto px-5 py-4 my-md-5 my-lg-0"
+                            <div className="col-lg-5 col-11 col-md-8 mx-auto px-5 py-4 my-md-5"
                                 style={{ backgroundColor: "#141414", borderRadius: "25px", border: "1px solid #ced4da" }}>
 
                                 <h6 className="ps-md-3 pb-2 text-white text-secondary text-left pt-3">
@@ -80,7 +80,7 @@ function CreateTutorAdvertisement() {
                                 </h6>
                                 <div className="mb-0">
                                     <p className="text-white">
-                                        Create an advertisement, put it out there and then make money.</p>
+                                        Create an advertisement, put it out there and make money.</p>
                                 </div>
 
                                 {/* Formik Form */}

@@ -6,7 +6,7 @@ function Navbar() {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark px-3" style={{ backgroundColor: "black" }}>
                 <div className="container-fluid">
-                <Link to="/" className="navbar-brand"><i>itutors</i></Link>
+                <Link to="/tutor/dashboard" className="navbar-brand"><i>itutors</i></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -41,7 +41,7 @@ function Navbar() {
                                     Mlamli Lolwane
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link to="/tutor/profile/update" className="dropdown-item">Profile</Link></li>
+                                    <li><Link to="/tutor/profile/view" className="dropdown-item">Profile</Link></li>
                                     <li><Link to="/" className="dropdown-item" >Account Settings</Link></li>
                                     <li><Link to="/" className="dropdown-item" >Sign Out</Link></li>
                                 </ul>

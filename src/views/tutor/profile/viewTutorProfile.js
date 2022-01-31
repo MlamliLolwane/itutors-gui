@@ -3,6 +3,7 @@ import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
 import React from 'react'
 import PlaceholderImage2 from '../../../assets/images/Hero-Image.jpg'
+import {Link} from 'react-router-dom'
 
 function ViewTutorProfile() {
     const [isActive, setActive] = React.useState(false);
@@ -63,8 +64,8 @@ function ViewTutorProfile() {
                                                 No ratings yet</small></p>
 
                                             <div className="text-center mb-3" >
-                                                <button type="submit"
-                                                    className="btn btn-primary">UPDATE PROFILE</button>
+                                                <Link to="/tutor/profile/update"
+                                                    className="btn btn-primary">UPDATE PROFILE</Link>
                                             </div>
                                         </div>
                                     </div>
