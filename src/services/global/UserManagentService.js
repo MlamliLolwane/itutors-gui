@@ -10,7 +10,7 @@ const login = async formData => {
 }
 
 const logoff = () => {
-    return axios.put('/logoff')
+    return axios.post('/logoff')
 }
 
 const emailVerification = formData => {

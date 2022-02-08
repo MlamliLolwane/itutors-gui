@@ -1,7 +1,18 @@
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import UserManagementService from '../../services/global/UserManagentService'
 
 function Navbar() {
+
+    const navigate = useNavigate();
+
+    async function signOut(e) {
+        e.preventDefault();
+
+        await UserManagementService.logoff();
+
+        navigate('/')
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark px-3" style={{ backgroundColor: "black" }}>
@@ -19,7 +30,7 @@ function Navbar() {
                                 <Link to="/tutor/advertisements/list" className="nav-link">Advertisements</Link>
                             </li>
                             <li className="nav-item me-4">
-                                <Link to="/tutor/tutoring-requests" className="nav-link" tabIndex="-1" aria-disabled="true">
+                                <Link to="/tutor/requests/view" className="nav-link" tabIndex="-1" aria-disabled="true">
                                     Tutoring Requests</Link>
                             </li>
 
@@ -43,7 +54,7 @@ function Navbar() {
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><Link to="/tutor/profile/view" className="dropdown-item">Profile</Link></li>
                                     <li><Link to="/" className="dropdown-item" >Account Settings</Link></li>
-                                    <li><Link to="/" className="dropdown-item" >Sign Out</Link></li>
+                                    <li><button className="dropdown-item" onClick={signOut}>Sign Out</button></li>
                                 </ul>
                             </li>
                         </div>

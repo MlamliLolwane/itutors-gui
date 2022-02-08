@@ -1,14 +1,24 @@
 import Navbar from '../../../components/tutor/tutorNavbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
-import React from 'react'
+import React, {useEffect} from 'react'
 import PlaceholderImage from '../../../assets/images/pink.jpg'
 import PlaceholderImage2 from '../../../assets/images/Hero-Image.jpg'
-//import TutorAdvertisementService from '../../../services/tutor/TutorAdvertisementService'
+import TutorAdvertisementService from '../../../services/tutor/TutorAdvertisementService'
 import { Link } from 'react-router-dom'
 
 function ListTutorAdvertisements() {
     const [isActive, setActive] = React.useState(false);
+
+    useEffect(async () => {
+        setActive(true);
+
+        const response = await TutorAdvertisementService.list();
+
+        console.log(response);
+
+        setActive(false);
+    }, [])
     return (
         <LoadingOverlay
             active={isActive}

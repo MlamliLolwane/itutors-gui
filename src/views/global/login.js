@@ -45,7 +45,7 @@ function Login() {
                         case 'Tutor':
                             setActive(false);
                             setSubmitting(false);
-                            navigate('/tutor/home')
+                            navigate('/tutor/dashboard')
                             break;
 
                         default:
@@ -76,62 +76,66 @@ function Login() {
 
                     <hr className="my-0 py-0" />
                     <div className="row">
+
                         <div style={{ minHeight: "100vh", backgroundColor: "black" }} className="col justify-content-md-center px-0 d-flex align-items-center">
-                            <div className="col-lg-5 col-11 col-md-8 mx-auto px-5 py-4 my-md-5 my-lg-0"
-                                style={{ backgroundColor: "#141414", borderRadius: "25px", border: "1px solid #ced4da" }}>
+                            <div className="col-lg-5 col-11 col-md-8 mx-auto px-5 py-4 my-md-5 my-lg-0">
 
-                                <h6 className="ps-md-3 pb-2 text-white text-secondary text-left pt-3">
-                                    LOGIN</h6>
+                                <div className="col-12 mx-auto">
+                                    <div className="card mb-3">
+                                        <div className="row g-0">
+                                            <div className="col-md-12 justify-content-md-center px-0 d-flex align-items-center">
+                                                <div className="card-body">
+                                                    <h5 className="card-title fw-bold pb-1">LOGIN</h5>
+                                                    <p className="card-text mb-0 pb-2">
+                                                        Welcome back to iTutors, we are happy to see you again. Login to access your account.
+                                            </p>
 
-                                <div className="mb-0">
-                                    <p className="text-white">
-                                        Welcome back to iTutors, we are happy to see you again. Login to access your account.
-                        </p>
+                                                    <Form>
+
+                                                        <div className="row justify-content-center mb-4">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field name="email" type="email" className="form-control ps-3"
+                                                                        placeholder=" " />
+
+                                                                    <label htmlFor="email">Email Address</label>
+
+                                                                    {/* <ErrorMessage name="email" /> */}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="row justify-content-center mb-3">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field className="form-control ps-3" name="password"
+                                                                        placeholder=" " type="password" />
+
+                                                                    <label htmlFor="password">Password</label>
+
+                                                                    {/* <ErrorMessage name="password" /> */}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div className="text-center mb-2" >
+                                                            <button type="submit"
+                                                                className="btn btn-primary">LOGIN</button>
+                                                        </div>
+
+                                                        <p className="fw-bold">
+                                                            <Link to="/forgot-password" className="nav-link" aria-current="page" style={{color: "#323335"}}><u>
+                                                                Forgot Password?
+</u></Link>
+                                                        </p>
+
+                                                    </Form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                {/* Formik Form */}
-                                <Form>
-
-                                    <div className="row justify-content-center mb-2">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field name="email" type="email" className="form-control ps-3"
-                                                    placeholder=" " />
-
-                                                <label htmlFor="email" className="text-white">Email Address</label>
-
-                                                <ErrorMessage name="email" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row justify-content-center mb-3">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="password"
-                                                    placeholder=" " type="password" />
-
-                                                <label htmlFor="password" className="text-white">Password</label>
-
-                                                <ErrorMessage name="password" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div className="text-center mb-2" >
-                                        <button type="submit"
-                                            className="btn btn-primary">LOGIN</button>
-                                    </div>
-
-                                    <p className="fw-bold">
-                                        <Link to="/forgot-password" className="nav-link text-white" aria-current="page"><u>
-                                            Forgot Password?
-                                    </u></Link>
-                                    </p>
-
-                                </Form>
-                                {/* End of Formik Form */}
                             </div>
                         </div>
                     </div>

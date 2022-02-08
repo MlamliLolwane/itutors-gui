@@ -5,9 +5,11 @@ import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import TutorAdvertisementService from '../../../services/tutor/TutorAdvertisementService'
+import {useNavigate} from 'react-router-dom'
 
 function CreateTutorAdvertisement() {
     const [isActive, setActive] = React.useState(false);
+    const navigate = useNavigate();
     return (
         <Formik
 
@@ -43,11 +45,11 @@ function CreateTutorAdvertisement() {
 
                     const response = await TutorAdvertisementService.store(values);
 
-                    console.log(response);
-
                     setActive(false);
 
                     setSubmitting(false);
+
+                    navigate('/tutor/advertisements/list')
                 } catch (error) {
                     setActive(false);
                     console.log(error);
@@ -68,99 +70,104 @@ function CreateTutorAdvertisement() {
             >
                 <div>
                     <Navbar />
-                    
+
                     <hr className="my-0 py-0" />
                     <div className="row">
+
                         <div style={{ minHeight: "100vh", backgroundColor: "black" }} className="col justify-content-md-center px-0 d-flex align-items-center">
-                            <div className="col-lg-5 col-11 col-md-8 mx-auto px-5 py-4 my-md-5"
-                                style={{ backgroundColor: "#141414", borderRadius: "25px", border: "1px solid #ced4da" }}>
+                            <div className="col-lg-5 col-11 col-md-8 mx-auto px-5 py-4 my-md-5 my-lg-0">
 
-                                <h6 className="ps-md-3 pb-2 text-white text-secondary text-left pt-3">
-                                    CREATE ADVERTISEMENT
-                                </h6>
-                                <div className="mb-0">
-                                    <p className="text-white">
-                                        Create an advertisement, put it out there and make money.</p>
+                                <div className="col-12 mx-auto">
+                                    <div className="card mb-3">
+                                        <div className="row g-0">
+                                            <div className="col-md-12 justify-content-md-center px-0 d-flex align-items-center">
+                                                <div className="card-body">
+                                                    <h5 className="card-title fw-bold pb-1">CREATE ADVERTISEMENT</h5>
+                                                    <p className="card-text mb-0 pb-2">
+                                                        Create an advertisement, put it out there and make money.
+                                            </p>
+
+                                                    <Form>
+
+                                                        <div className="row justify-content-center mb-4">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field name="title" type="text" className="form-control ps-3"
+                                                                        placeholder=" " />
+
+                                                                    <label htmlFor="title" >
+                                                                        Advertisement Title</label>
+
+                                                                    <ErrorMessage name="title" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="row justify-content-center mb-3">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field className="form-control ps-3" name="content"
+                                                                        placeholder=" " as="textarea" style={{ height: "100px" }} />
+
+                                                                    <label htmlFor="content" >
+                                                                        Advertisement Content</label>
+                                                                    <ErrorMessage name="content" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="row justify-content-center mb-2">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field className="form-control ps-3" name="price"
+                                                                        placeholder=" " type="number" />
+
+                                                                    <label htmlFor="price" >Price</label>
+
+                                                                    <ErrorMessage name="price" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div className="row justify-content-center mb-3">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field className="form-control ps-3" name="duration"
+                                                                        placeholder=" " type="number" />
+
+                                                                    <label htmlFor="duration" >
+                                                                        Session Duration (Minutes)</label>
+                                                                    <ErrorMessage name="duration" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="row justify-content-center mb-4">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field className="form-control ps-3" name="max_participants"
+                                                                        placeholder=" " type="number" />
+
+                                                                    <label htmlFor="max_participants" >
+                                                                        Maximum Participants
+            </label>
+                                                                    <ErrorMessage name="max_participants" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="text-center mb-3" >
+                                                            <button type="submit"
+                                                                className="btn btn-primary">CREATE ADVERTISEMENT</button>
+                                                        </div>
+
+                                                    </Form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                {/* Formik Form */}
-                                <Form>
-
-                                    <div className="row justify-content-center mb-4">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field name="title" type="text" className="form-control ps-3"
-                                                    placeholder=" " />
-
-                                                <label htmlFor="title" className="text-white">
-                                                    Advertisement Title</label>
-
-                                                <ErrorMessage name="title" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row justify-content-center mb-3">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="content"
-                                                    placeholder=" " as="textarea" style={{ height: "100px" }} />
-
-                                                <label htmlFor="content" className="text-white">
-                                                    Advertisement Content</label>
-                                                <ErrorMessage name="content" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row justify-content-center mb-2">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="price"
-                                                    placeholder=" " type="number" />
-
-                                                <label htmlFor="price" className="text-white">Price</label>
-
-                                                <ErrorMessage name="price" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div className="row justify-content-center mb-3">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="duration"
-                                                    placeholder=" " type="number" />
-
-                                                <label htmlFor="duration" className="text-white">
-                                                    Session Duration (Minutes)</label>
-                                                <ErrorMessage name="duration" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row justify-content-center mb-4">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="max_participants"
-                                                    placeholder=" " type="number" />
-
-                                                <label htmlFor="max_participants" className="text-white">
-                                                    Maximum Participants
-                                                </label>
-                                                <ErrorMessage name="max_participants" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="text-center mb-3" >
-                                        <button type="submit"
-                                            className="btn btn-primary">CREATE ADVERTISEMENT</button>
-                                    </div>
-
-                                </Form>
-                                {/* End of Formik Form */}
                             </div>
                         </div>
                     </div>

@@ -50,34 +50,42 @@ p {
   border-left: none !important;
   border-right: none !important;
   border-top: none !important;
-  color: #b5d4fa !important;
+  color: #323335 !important;
   background-color: transparent !important;
   font-weight: lighter !important;
+  /* border-color: #323335 !important; */
 }
 
 .form-control:focus {
   border-color: #86b7fe;
   outline: 0;
   box-shadow: none !important;
-  color: #e3e8ee !important;
+  color: #323335 !important;
   background-color: transparent;
   font-weight: lighter;
 }
 
 
 .form-control::placeholder {
-  color: #e3e8ee !important;
+  color: #323335 !important;
   opacity: .7;
   font-weight: lighter;
 }
 
 textarea {
   background-color: transparent !important;
-  color: #b5d4fa !important;
+  color:  #323335 !important;
   font-weight: lighter !important;
 }
 
+label{
+  color: #323335 !important;
+  font-weight: lighter !important;
+  font-size: 15px !important;
+}
+
 .float-label {
+  font-weight: normal !important;
   opacity: .65;
   transform: scale(.85) translateY(-.5rem) translateX(.15rem);
 }
@@ -251,10 +259,6 @@ select option {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-label {
-  color: #e3e8ee !important;
 }
 
 

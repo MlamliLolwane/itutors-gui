@@ -102,68 +102,72 @@ function SignUp(props) {
 
                     <hr className="my-0 py-0" />
                     <div className="row">
+
                         <div style={{ minHeight: "100vh", backgroundColor: "black" }} className="col justify-content-md-center px-0 d-flex align-items-center">
-                            <div className="col-lg-5 col-11 col-md-8 mx-auto px-5 py-4 my-md-5 my-lg-0"
-                                style={{ backgroundColor: "#141414", borderRadius: "25px", border: "1px solid #ced4da" }}>
+                            <div className="col-lg-5 col-11 col-md-8 mx-auto px-5 py-4 my-md-5 my-lg-0">
 
-                                <h6 className="ps-md-3 pb-2 text-white text-secondary text-left pt-3">
-                                    SIGN UP</h6>
+                                <div className="col-12 mx-auto">
+                                    <div className="card mb-3">
+                                        <div className="row g-0">
+                                            <div className="col-md-12 justify-content-md-center px-0 d-flex align-items-center">
+                                                <div className="card-body">
+                                                    <h5 className="card-title fw-bold pb-1">SIGN UP</h5>
+                                                    <p className="card-text mb-0 pb-2">
+                                                        Welcome to iTutors, a place where students and tutors interact.
+                                            </p>
 
-                                <div className="mb-0">
-                                    <p className="text-white">
-                                        Welcome to iTutors, a place to learn and share knowledge. Sign Up to get started.
-                        </p>
+                                                    <Form>
+
+                                                        <div className="row justify-content-center mb-2">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field name="email" type="email" className="form-control ps-3"
+                                                                        placeholder=" " />
+
+                                                                    <label htmlFor="email" >Email Address</label>
+
+                                                                    <ErrorMessage name="email" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="row justify-content-center mb-2">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field className="form-control ps-3" name="password"
+                                                                        placeholder=" " type="password" />
+
+                                                                    <label htmlFor="password" >Password</label>
+
+                                                                    <ErrorMessage name="password" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div className="row justify-content-center mb-3">
+                                                            <div className="col">
+                                                                <div className="form-floating">
+                                                                    <Field className="form-control ps-3" name="password_confirmation"
+                                                                        placeholder=" " type="password" />
+
+                                                                    <label htmlFor="password_confirmation" >Confirm Password</label>
+                                                                    <ErrorMessage name="password_confirmation" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="text-center mb-3" >
+                                                            <button type="submit"
+                                                                className="btn btn-primary">SIGN UP</button>
+                                                        </div>
+
+                                                    </Form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                {/* Formik Form */}
-                                <Form>
-
-                                    <div className="row justify-content-center mb-2">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field name="email" type="email" className="form-control ps-3"
-                                                    placeholder=" " />
-
-                                                <label htmlFor="email" className="text-white">Email Address</label>
-
-                                                <ErrorMessage name="email" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row justify-content-center mb-2">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="password"
-                                                    placeholder=" " type="password" />
-
-                                                <label htmlFor="password" className="text-white">Password</label>
-
-                                                <ErrorMessage name="password" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div className="row justify-content-center mb-3">
-                                        <div className="col">
-                                            <div className="form-floating">
-                                                <Field className="form-control ps-3" name="password_confirmation"
-                                                    placeholder=" " type="password" />
-
-                                                <label htmlFor="password_confirmation" className="text-white">Confirm Password</label>
-                                                <ErrorMessage name="password_confirmation" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="text-center mb-3" >
-                                        <button type="submit"
-                                            className="btn btn-primary">SIGN UP</button>
-                                    </div>
-
-                                </Form>
-                                {/* End of Formik Form */}
                             </div>
                         </div>
                     </div>

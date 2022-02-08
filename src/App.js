@@ -16,6 +16,7 @@ import UpdateTutorProfile from './views/tutor/profile/updateTutorProfile';
 import CreateTutorAdvertisement from './views/tutor/advertisements/createTutorAdvertisement';
 import ListTutorAdvertisements from './views/tutor/advertisements/listTutorAdvertisements';
 import ViewTutorAdvertisement from './views/tutor/advertisements/viewTutorAdvertisement';
+import ViewTutoringRequests from './views/tutor/tutoringRequests/viewTutoringRequest';
 import TutorDashboard from './views/tutor/dashboard';
 
 /**
@@ -57,6 +58,7 @@ function App() {
           <Route path="/tutor/advertisements/list" element={<ListTutorAdvertisements/>} />
           <Route path="/tutor/advertisements/create" element={<CreateTutorAdvertisement/>} />
           <Route path="/tutor/advertisements/view" element={<ViewTutorAdvertisement/>} />
+          <Route path="/tutor/requests/view" element={<ViewTutoringRequests/>} />
           
 
 
