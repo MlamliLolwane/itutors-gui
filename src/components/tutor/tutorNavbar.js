@@ -33,7 +33,10 @@ function Navbar() {
                                 <Link to="/tutor/requests/view" className="nav-link" tabIndex="-1" aria-disabled="true">
                                     Tutoring Requests</Link>
                             </li>
-
+                            <li className="nav-item me-4">
+                                <Link to="/tutor/schedule/view" className="nav-link" tabIndex="-1" aria-disabled="true">
+                                    Schedule</Link>
+                            </li>
                             <li className="nav-item dropdown">
                                 <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     miscellaneous

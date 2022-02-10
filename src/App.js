@@ -16,6 +16,8 @@ import UpdateTutorProfile from './views/tutor/profile/updateTutorProfile';
 import CreateTutorAdvertisement from './views/tutor/advertisements/createTutorAdvertisement';
 import ListTutorAdvertisements from './views/tutor/advertisements/listTutorAdvertisements';
 import ViewTutorAdvertisement from './views/tutor/advertisements/viewTutorAdvertisement';
+import CreateTutorSchedule from './views/tutor/schedule/createTutorSchedule';
+import ViewTutorSchedule from './views/tutor/schedule/viewTutorSchedule';
 import ViewTutoringRequests from './views/tutor/tutoringRequests/viewTutoringRequest';
 import TutorDashboard from './views/tutor/dashboard';
 
@@ -29,11 +31,11 @@ import ViewStudentProfile from './views/student/profile/viewStudentProfile';
  * Imports
  */
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStar, faSearch, faTimes, faSort } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faSearch, faTimes, faSort, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 
-library.add(faStar, faSearch, faTimes, faSort)
+library.add(faStar, faSearch, faTimes, faSort, faEllipsisV);
 
 function App() {
   return (
@@ -50,15 +52,17 @@ function App() {
 
 
           {/* Tutor Routes */}
+          <Route path="/tutor/signup" element={<SignUp/>} />
+          <Route path="/tutor/login" element={<Login/>} />
           <Route path="/tutor/dashboard" element={<TutorDashboard/>} />
           <Route path="/tutor/profile/view" element={<ViewTutorProfile/>} />
           <Route path="/tutor/profile/update" element={<UpdateTutorProfile/>} />
-          <Route path="/tutor/signup" element={<SignUp/>} />
-          <Route path="/tutor/login" element={<Login/>} />
           <Route path="/tutor/advertisements/list" element={<ListTutorAdvertisements/>} />
           <Route path="/tutor/advertisements/create" element={<CreateTutorAdvertisement/>} />
           <Route path="/tutor/advertisements/view" element={<ViewTutorAdvertisement/>} />
           <Route path="/tutor/requests/view" element={<ViewTutoringRequests/>} />
+          <Route path="/tutor/schedule/view" element={<ViewTutorSchedule/>} />
+          <Route path="/tutor/schedule/create" element={<CreateTutorSchedule/>} />
           
 
 
