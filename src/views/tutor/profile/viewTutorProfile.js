@@ -1,12 +1,30 @@
 import Navbar from '../../../components/tutor/tutorNavbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
-import React from 'react'
+import React, { useEffect } from 'react'
 import PlaceholderImage2 from '../../../assets/images/Hero-Image.jpg'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import TutorProfileService from '../../../services/tutor/TutorProfileService'
 
 function ViewTutorProfile() {
     const [isActive, setActive] = React.useState(false);
+    const [tutorProfile, setTutorProfile] = React.useState();
+
+    useEffect(() => {
+        GetTutorProfile();
+    }, []);
+
+    async function GetTutorProfile() {
+        setActive(true);
+        try {
+            const response = await TutorProfileService.show(1);
+            setTutorProfile(response);
+            setActive(false);
+        } catch (error) {
+            setActive(false);
+            console.log(error);
+        }
+    }
 
     return (
         <LoadingOverlay

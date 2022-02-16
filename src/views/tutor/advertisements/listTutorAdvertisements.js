@@ -1,7 +1,7 @@
 import Navbar from '../../../components/tutor/tutorNavbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PlaceholderImage from '../../../assets/images/pink.jpg'
 import PlaceholderImage2 from '../../../assets/images/Hero-Image.jpg'
 import TutorAdvertisementService from '../../../services/tutor/TutorAdvertisementService'
@@ -10,15 +10,25 @@ import { Link } from 'react-router-dom'
 function ListTutorAdvertisements() {
     const [isActive, setActive] = React.useState(false);
 
-    useEffect(async () => {
-        setActive(true);
-
-        const response = await TutorAdvertisementService.list();
-
-        console.log(response);
-
-        setActive(false);
+    useEffect(() => {
+        getTutorAdvertisements();
     }, [])
+
+    async function getTutorAdvertisements() {
+        try {
+            setActive(true);
+
+            const response = await TutorAdvertisementService.list();
+
+            console.log(response);
+
+            setActive(false);
+        } catch (error) {
+            setActive(false);
+            console.log(error);
+        }
+    }
+
     return (
         <LoadingOverlay
             active={isActive}
@@ -51,8 +61,8 @@ function ListTutorAdvertisements() {
                     </div>
 
                     <div className="row">
-                        <div className="col-6 mx-auto">
-                            <div className="card mb-3">
+                        <div className="col-7 mx-auto">
+                            <div className="card mb-3 h-100">
                                 <div className="row g-0">
                                     <div className="col-md-4">
                                         <img src={PlaceholderImage}
@@ -73,11 +83,9 @@ function ListTutorAdvertisements() {
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="row">
-                        <div className="col-6 mx-auto">
-                            <div className="card mb-3">
+                        <div className="col-7 mx-auto">
+                            <div className="card mb-3 h-100">
                                 <div className="row g-0">
                                     <div className="col-md-4">
                                         <img src={PlaceholderImage2}
@@ -98,6 +106,7 @@ function ListTutorAdvertisements() {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

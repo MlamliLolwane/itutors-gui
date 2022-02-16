@@ -70,7 +70,7 @@ function ViewTutorSchedule() {
                                                                             <Field type="checkbox" name="daysOfWeek" value="1" />
                                                                         </td>
                                                                         <td className="fw-lighter pe-5">
-                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey"/>
+                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -80,7 +80,7 @@ function ViewTutorSchedule() {
                                                                             <Field type="checkbox" name="daysOfWeek" value="2" />
                                                                         </td>
                                                                         <td className="fw-lighter pe-5">
-                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey"/>
+                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -90,7 +90,7 @@ function ViewTutorSchedule() {
                                                                             <Field type="checkbox" name="daysOfWeek" value="3" />
                                                                         </td>
                                                                         <td className="fw-lighter pe-5">
-                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey"/>
+                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -100,7 +100,7 @@ function ViewTutorSchedule() {
                                                                             <Field type="checkbox" name="daysOfWeek" value="4" />
                                                                         </td>
                                                                         <td className="fw-lighter pe-5">
-                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey"/>
+                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -110,7 +110,7 @@ function ViewTutorSchedule() {
                                                                             <Field type="checkbox" name="daysOfWeek" value="5" />
                                                                         </td>
                                                                         <td className="fw-lighter pe-5">
-                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey"/>
+                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -120,7 +120,7 @@ function ViewTutorSchedule() {
                                                                             <Field type="checkbox" name="daysOfWeek" value="6" />
                                                                         </td>
                                                                         <td className="fw-lighter pe-5">
-                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey"/>
+                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -130,14 +130,14 @@ function ViewTutorSchedule() {
                                                                             <Field type="checkbox" name="daysOfWeek" value="7" />
                                                                         </td>
                                                                         <td className="fw-lighter pe-5">
-                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey"/>
+                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td className="fw-lighter px-5 mb-0 py-0" colspan="4">
                                                                             <div className="text-center" >
-                                                                                <button type="submit"
-                                                                                    className="btn btn-primary">UPDATE SCHEDULE</button>
+                                                                                <Link to="/tutor/schedule/create"
+                                                                                    className="btn btn-primary">UPDATE SCHEDULE</Link>
                                                                             </div>
                                                                         </td>
                                                                     </tr>

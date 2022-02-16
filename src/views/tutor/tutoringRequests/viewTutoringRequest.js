@@ -1,7 +1,7 @@
 import Navbar from '../../../components/tutor/tutorNavbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PlaceholderImage from '../../../assets/images/pink.jpg'
 import TutoringRequestService from '../../../services/tutor/TutoringRequestService'
 import { Link } from 'react-router-dom'
@@ -10,7 +10,11 @@ import { Link } from 'react-router-dom'
 function ViewTutoringRequest() {
     const [isActive, setActive] = React.useState(false);
 
-    useEffect(async() => {
+    useEffect(() => {
+        getTutorTutoringRequests()
+    }, [])
+
+    async function getTutorTutoringRequests() {
         setActive(true);
 
         const response = await TutoringRequestService.list_tutoring_requests();
@@ -18,8 +22,8 @@ function ViewTutoringRequest() {
         console.log(response);
 
         setActive(false);
-    }, [])
-
+    }
+    
     return (
         <LoadingOverlay
             active={isActive}

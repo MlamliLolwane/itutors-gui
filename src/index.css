@@ -18,7 +18,7 @@ p {
   height: "100vh" !important
 } */
 
-.font-small-headings{
+.font-small-headings {
   font-size: 12px !important;
 }
 
@@ -40,6 +40,10 @@ p {
 .modal-header {
   border-bottom: none !important;
 }
+
+
+/* Equal height columns */
+
 
 
 
@@ -74,11 +78,11 @@ p {
 
 textarea {
   background-color: transparent !important;
-  color:  #323335 !important;
+  color: #323335 !important;
   font-weight: lighter !important;
 }
 
-label{
+label {
   color: #323335 !important;
   font-weight: lighter !important;
   font-size: 15px !important;
@@ -374,11 +378,11 @@ td {
   border: 1px solid #ced4da !important
 }
 
-.text-green{
-  color:  rgb(83, 199, 83) !important;
+.text-green {
+  color: rgb(83, 199, 83) !important;
 }
 
-.text-grey{
+.text-grey {
   color: rgb(83, 81, 81) !important
 }
 

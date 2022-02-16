@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const show = formData => {
-    return axios.get('/tutor/profile/show', formData);
+const show = (tutor_id) => {
+    return axios.get('/tutor/profile/show/' + tutor_id);
 }
 
 const store = formData => {
