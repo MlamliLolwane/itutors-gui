@@ -8,7 +8,7 @@ import TutorProfileService from '../../../services/tutor/TutorProfileService'
 
 function ViewTutorProfile() {
     const [isActive, setActive] = React.useState(false);
-    const [tutorProfile, setTutorProfile] = React.useState();
+    const [tutorProfile, setTutorProfile] = React.useState("");
 
     useEffect(() => {
         GetTutorProfile();
@@ -18,7 +18,8 @@ function ViewTutorProfile() {
         setActive(true);
         try {
             const response = await TutorProfileService.show(1);
-            setTutorProfile(response);
+            setTutorProfile(response.data);
+            console.log(response.data);
             setActive(false);
         } catch (error) {
             setActive(false);
@@ -54,7 +55,6 @@ function ViewTutorProfile() {
                             </h6>
                         </div>
 
-
                         <div className="col-6 mx-auto">
                             <div className="card mb-3">
                                 <div className="row g-0">
@@ -62,31 +62,31 @@ function ViewTutorProfile() {
                                         <img src={PlaceholderImage2}
                                             className="img-fluid" alt="Advertisement Image" />
                                     </div>
-                                    <div className="col-md-8 justify-content-md-center px-0 d-flex align-items-center">
-                                        <div className="card-body">
-                                            <h5 className="card-title fw-bold text-green pb-1">Mlamli Lolwane</h5>
-                                            <p className="card-text fw-bolder mb-0 pb-2"
-                                                style={{ textTransform: "capitalize" }}>
-                                                Software Developer - Multichoice
-                                            </p>
-                                            <p className="card-text mb-0 pb-2">
-                                                I am a fullstack software developer at Multichoice and
-                                                the technologies I mostly deal with are PHP, C# and Python.
-                                                The frontend technologies I mostly work with are ReactJS, VueJS
-                                                and Flutter. I have been developing software for the past 6 years
-                                                and have in depth knowledge about software design patterns and
-                                                best practices.
-                                            </p>
 
-                                            <p className="card-text"><small className="text-muted">
-                                                No ratings yet</small></p>
 
-                                            <div className="text-center mb-3" >
-                                                <Link to="/tutor/profile/update"
-                                                    className="btn btn-primary">UPDATE PROFILE</Link>
+                                    {tutorProfile ?
+                                        <div className="col-md-8 justify-content-md-center px-0 d-flex align-items-center">
+                                            <div className="card-body">
+                                                <h5 className="card-title fw-bold text-green pb-1">{tutorProfile.first_name} {tutorProfile.last_name}</h5>
+                                                <p className="card-text fw-bolder mb-0 pb-2"
+                                                    style={{ textTransform: "capitalize" }}>
+                                                    {tutorProfile.job_title}
+                                                </p>
+                                                <p className="card-text mb-0 pb-2">
+                                                    {tutorProfile.description}
+                                                </p>
+
+                                                <p className="card-text"><small className="text-muted">
+                                                    No ratings yet</small></p>
+
+                                                <div className="text-center mb-3" >
+                                                    <Link to="/tutor/profile/update"
+                                                        className="btn btn-primary">UPDATE PROFILE</Link>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+
+                                        : <h3>No data yet</h3>}
                                 </div>
                             </div>
                         </div>
