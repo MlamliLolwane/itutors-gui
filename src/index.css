@@ -43,8 +43,21 @@ p {
 
 
 /* Equal height columns */
+/* 
+.grid-container {
+  display: grid;
+  grid-auto-rows: 400px;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
 
-
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+} */
 
 
 /* Input fields */
