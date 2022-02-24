@@ -63,7 +63,7 @@ function ListTutorAdvertisements() {
                         </div>
                     </div> */}
 
-                    {tutorAdvertisement &&
+                    {tutorAdvertisement ?
                         tutorAdvertisement.map(advertisement => (
                             <div className="row grid-container" key={advertisement.id}>
                                 <div className="col-7 mx-auto mb-4">
@@ -89,7 +89,9 @@ function ListTutorAdvertisements() {
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                        )): <h1>
+                                No data to display
+                            </h1>}
 
                     {/* <div className="grid-container">
                         <div className="item1">
