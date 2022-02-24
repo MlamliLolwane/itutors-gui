@@ -31,11 +31,11 @@ import ViewStudentProfile from './views/student/profile/viewStudentProfile';
  * Imports
  */
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStar, faSearch, faTimes, faSort, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faSearch, faTimes, faSort, faEllipsisV, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 
-library.add(faStar, faSearch, faTimes, faSort, faEllipsisV);
+library.add(faStar, faSearch, faTimes, faSort, faEllipsisV, faTimesCircle);
 
 function App() {
   return (

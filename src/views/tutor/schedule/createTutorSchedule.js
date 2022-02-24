@@ -5,11 +5,31 @@ import { Link, useNavigate } from 'react-router-dom'
 import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import UserManagementService from '../../services/global/UserManagentService'
 
 function CreateTutorSchedule() {
     const [isActive, setActive] = React.useState(false);
+    const [formValues, setFormValues] = React.useState([{ start_time: "", end_time: "" }])
+    const [col, setCol] = React.useState("col-0")
     const navigate = useNavigate();
+
+    //Create dynamic form 
+    let addFormFields = () => {
+        setCol("col-2");
+        setFormValues([...formValues, { start_time: "", end_time: "" }])
+    }
+
+    let removeFormFields = (i) => {
+        let newFormValues = [...formValues];
+        newFormValues.splice(i, 1);
+        setFormValues(newFormValues)
+        
+        if(formValues.length == 2)
+        {
+            setCol("col-0");
+        }
+    }
 
     return (
         <Formik
@@ -52,40 +72,63 @@ function CreateTutorSchedule() {
                                                     </p>
                                                     <Form>
 
-                                                        <div class="row justify-content-center mb-3">
-                                                            <div class="col-4">
-                                                                <div className="form-floating">
-                                                                    <Field name="start_time" type="time" className="form-control ps-3"
-                                                                        placeholder=" " />
+                                                        {formValues.map((element, index) => (
+                                                            <div className="row justify-content-center mb-3">
+                                                                <div className="col-4">
+                                                                    <div className="form-floating">
+                                                                        <Field name="start_time" type="time" className="form-control ps-3"
+                                                                            placeholder=" " />
 
-                                                                    <label htmlFor="email">Start Time</label>
+                                                                        <label htmlFor="email">Start Time</label>
 
-                                                                    {/* <ErrorMessage name="email" /> */}
+                                                                        {/* <ErrorMessage name="email" /> */}
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <div className="form-floating">
-                                                                    <Field className="form-control ps-3" name="end_time"
-                                                                        placeholder=" " type="time" />
+                                                                <div className="col-4">
+                                                                    <div className="form-floating">
+                                                                        <Field className="form-control ps-3" name="end_time"
+                                                                            placeholder=" " type="time" />
 
-                                                                    <label htmlFor="password">End Time</label>
+                                                                        <label htmlFor="password">End Time</label>
 
-                                                                    {/* <ErrorMessage name="password" /> */}
+                                                                        {/* <ErrorMessage name="password" /> */}
+                                                                    </div>
                                                                 </div>
+
+                                                                {
+                                                                    index ?
+                                                                        <div className="col-2">
+                                                                            <div className="pt-4">
+                                                                                <button
+                                                                                    className="btn btn-link mx-auto"
+                                                                                    style={{ color: "#323335" }}
+                                                                                    onClick={() => removeFormFields()}
+                                                                                ><u>
+                                                                                        <FontAwesomeIcon icon="times-circle" color="maroon" className="hoverable" />
+                                                                                    </u></button>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        : <div className={col}>
+
+                                                                        </div>
+                                                                }
                                                             </div>
+                                                        ))}
+                                                        <div className="mb-3">
+                                                            <button
+                                                                className="btn btn-link nav-link fw-bold mx-auto"
+                                                                style={{ color: "#323335" }}
+                                                                onClick={() => addFormFields()}
+                                                            ><u>
+                                                                    Add another time slot
+                                                            </u></button>
                                                         </div>
-
-                                                        <p className="fw-bold">
-                                                            <Link to="/forgot-password" className="nav-link" aria-current="page" style={{ color: "#323335" }}><u>
-                                                                Add another time slot
-                                                            </u></Link>
-                                                        </p>
 
                                                         <div className="text-center mb-2" >
                                                             <button type="submit"
                                                                 className="btn btn-primary">UPDATE SCHEDULE</button>
                                                         </div>
-
                                                     </Form>
                                                 </div>
                                             </div>
