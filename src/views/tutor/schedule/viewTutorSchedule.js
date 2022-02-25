@@ -3,22 +3,31 @@ import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
 import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import TutoringRequestService from '../../../services/tutor/TutoringRequestService'
+import TutorScheduleService from '../../../services/tutor/TutorScheduleService'
 import { Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 
 function ViewTutorSchedule() {
     const [isActive, setActive] = React.useState(false);
+    const [tutorSchedule, setTutorSchedule] = React.useState([]);
+    const [scheduleTime, setScheduleTime] = React.useState([]);
 
-    // useEffect(async () => {
-    //     setActive(true);
+    useEffect(() => {
+        getTutorSchedule();
+    }, []);
 
-    //     const response = await TutoringRequestService.list_tutoring_requests();
-
-    //     console.log(response);
-
-    //     setActive(false);
-    // }, []);
+    async function getTutorSchedule() {
+        setActive(true);
+        try {
+            const response = await TutorScheduleService.list(1);
+            setTutorSchedule(response.data);
+            alert(response.data[0].schedule);
+            setActive(false);
+        } catch (error) {
+            setActive(false);
+            console.log(error);
+        }
+    }
 
     return (
         <Formik
@@ -63,84 +72,70 @@ function ViewTutorSchedule() {
                                                         <div>
                                                             <table class="table">
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td className="fw-lighter ps-5">Monday</td>
-                                                                        <td className="fw-lighter px-5">10:00 - 12:00, 18:00 - 22:00</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <Field type="checkbox" name="daysOfWeek" value="1" />
-                                                                        </td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
+                                                                    {tutorSchedule ?
+                                                                        tutorSchedule.map(schedule => (
+                                                                            <tr>
+                                                                                <td className="fw-lighter ps-5">{schedule.day_name}</td>
+                                                                                {schedule.schedule ?
+                                                                                    <td className="fw-lighter px-5">{schedule.schedule}</td>
+                                                                                    :
+                                                                                    <td className="fw-lighter px-5">Schedule not set yet.</td>
+                                                                                }
+                                                                                <td className="fw-lighter pe-5">
+                                                                                    <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
+                                                                                </td>
+                                                                            </tr>
+                                                                        )) : null}
+                                                                    {/* <tr>
                                                                         <td className="fw-lighter ps-5">Tuesday</td>
                                                                         <td className="fw-lighter px-5">10:00 - 12:00, 18:00 - 22:00</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <Field type="checkbox" name="daysOfWeek" value="2" />
-                                                                        </td>
                                                                         <td className="fw-lighter pe-5">
                                                                             <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td className="fw-lighter ps-5">Wednesday</td>
-                                                                        <td className="fw-lighter px-5">10:00 - 12:00, 18:00 - 22:00</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <Field type="checkbox" name="daysOfWeek" value="3" />
-                                                                        </td>
+                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
                                                                         <td className="fw-lighter pe-5">
                                                                             <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td className="fw-lighter ps-5">Thursday</td>
-                                                                        <td className="fw-lighter px-5">10:00 - 12:00, 18:00 - 22:00</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <Field type="checkbox" name="daysOfWeek" value="4" />
-                                                                        </td>
+                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
                                                                         <td className="fw-lighter pe-5">
                                                                             <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td className="fw-lighter ps-5">Friday</td>
-                                                                        <td className="fw-lighter px-5">10:00 - 12:00, 18:00 - 22:00</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <Field type="checkbox" name="daysOfWeek" value="5" />
-                                                                        </td>
+                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
                                                                         <td className="fw-lighter pe-5">
                                                                             <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td className="fw-lighter ps-5">Saturday</td>
-                                                                        <td className="fw-lighter px-5">10:00 - 12:00, 18:00 - 22:00</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <Field type="checkbox" name="daysOfWeek" value="6" />
-                                                                        </td>
+                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
                                                                         <td className="fw-lighter pe-5">
                                                                             <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td className="fw-lighter ps-5">Sunday</td>
-                                                                        <td className="fw-lighter px-5">10:00 - 12:00, 18:00 - 22:00</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <Field type="checkbox" name="daysOfWeek" value="7" />
-                                                                        </td>
+                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
                                                                         <td className="fw-lighter pe-5">
                                                                             <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                         </td>
-                                                                    </tr>
-                                                                    <tr>
+                                                                    </tr> */}
+                                                                    {/* <tr>
                                                                         <td className="fw-lighter px-5 mb-0 py-0" colspan="4">
                                                                             <div className="text-center" >
                                                                                 <Link to="/tutor/schedule/create"
                                                                                     className="btn btn-primary">UPDATE SCHEDULE</Link>
                                                                             </div>
                                                                         </td>
-                                                                    </tr>
+                                                                    </tr> */}
                                                                 </tbody>
                                                             </table>
                                                         </div>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const list = formData => {
-    return axios.get('/tutor/schedule/list', formData);
+const list = tutor_id => {
+    return axios.get('/tutor/schedule/list/' + tutor_id);
 }
 
 // const show = formData => {

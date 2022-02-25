@@ -6,7 +6,7 @@ import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import UserManagementService from '../../services/global/UserManagentService'
+import TutorScheduleService from '../../../services/tutor/TutorScheduleService'
 
 function CreateTutorSchedule() {
     const [isActive, setActive] = React.useState(false);
@@ -24,10 +24,37 @@ function CreateTutorSchedule() {
         let newFormValues = [...formValues];
         newFormValues.splice(i, 1);
         setFormValues(newFormValues)
-        
-        if(formValues.length == 2)
-        {
+
+        if (formValues.length == 2) {
             setCol("col-0");
+        }
+    }
+
+    //Handle input change
+    let handleChange = (i, e) => {
+        let newFormValues = [...formValues];
+        newFormValues[i][e.target.name] = e.target.value;
+        setFormValues(newFormValues);
+    }
+
+    //Submit the form
+    let handleSubmit = async (e) => {
+        try {
+            setActive(true);
+
+            e.preventDefault();
+
+            await TutorScheduleService.store({
+                tutor_id: 1,
+                day_id: 2,
+                schedule: JSON.stringify(formValues)
+            })
+
+            setActive(false);
+
+            navigate("/tutor/schedule/view")
+        } catch (error) {
+
         }
     }
 
@@ -76,8 +103,8 @@ function CreateTutorSchedule() {
                                                             <div className="row justify-content-center mb-3">
                                                                 <div className="col-4">
                                                                     <div className="form-floating">
-                                                                        <Field name="start_time" type="time" className="form-control ps-3"
-                                                                            placeholder=" " />
+                                                                        <input name="start_time" type="time" className="form-control ps-3"
+                                                                            placeholder=" " onChange={e => handleChange(index, e)} />
 
                                                                         <label htmlFor="email">Start Time</label>
 
@@ -86,8 +113,8 @@ function CreateTutorSchedule() {
                                                                 </div>
                                                                 <div className="col-4">
                                                                     <div className="form-floating">
-                                                                        <Field className="form-control ps-3" name="end_time"
-                                                                            placeholder=" " type="time" />
+                                                                        <input className="form-control ps-3" name="end_time"
+                                                                            placeholder=" " type="time" onChange={e => handleChange(index, e)} />
 
                                                                         <label htmlFor="password">End Time</label>
 
@@ -100,6 +127,7 @@ function CreateTutorSchedule() {
                                                                         <div className="col-2">
                                                                             <div className="pt-4">
                                                                                 <button
+                                                                                    type="button"
                                                                                     className="btn btn-link mx-auto"
                                                                                     style={{ color: "#323335" }}
                                                                                     onClick={() => removeFormFields()}
@@ -126,7 +154,7 @@ function CreateTutorSchedule() {
                                                         </div>
 
                                                         <div className="text-center mb-2" >
-                                                            <button type="submit"
+                                                            <button type="submit" onClick={handleSubmit}
                                                                 className="btn btn-primary">UPDATE SCHEDULE</button>
                                                         </div>
                                                     </Form>
