@@ -6,11 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TutorScheduleService from '../../../services/tutor/TutorScheduleService'
 import { Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { parse } from '@fortawesome/fontawesome-svg-core'
 
 function ViewTutorSchedule() {
     const [isActive, setActive] = React.useState(false);
     const [tutorSchedule, setTutorSchedule] = React.useState([]);
-    const [scheduleTime, setScheduleTime] = React.useState([]);
+    const [schedule, setSchedule] = React.useState([]);
 
     useEffect(() => {
         getTutorSchedule();
@@ -19,13 +20,50 @@ function ViewTutorSchedule() {
     async function getTutorSchedule() {
         setActive(true);
         try {
+            let scheduleObject = {};
+            let tutorNewSchedule = [];
             const response = await TutorScheduleService.list(1);
-            setTutorSchedule(response.data);
-            alert(response.data[0].schedule);
+
+            response.data.map(data => {
+
+                let daySchedule = "";
+                scheduleObject.day_name = data.day_name;
+                //<td className="fw-lighter ps-5">{schedule.day_name}</td>
+
+                if (data.schedule) {
+                    let daily_schedule = JSON.parse(data.schedule);
+
+                    daily_schedule.map(schedule => {
+                        daySchedule +=
+                            schedule.start_time + " - " + schedule.end_time + ", ";
+                    })
+                }
+                else {
+                    daySchedule = "Schedule not set yet";
+                }
+
+                if(daySchedule != "Schedule not set yet")
+                {
+                    scheduleObject.schedule = daySchedule.substring(0, daySchedule.length -2);
+                }
+                else{
+                    scheduleObject.schedule = daySchedule;
+                }
+                
+                //console.log(scheduleObject)
+
+                //The following line of code only appends the last values  of the object (Sunday)
+
+                tutorNewSchedule.push(JSON.parse(JSON.stringify(scheduleObject)));
+                // console.log(tutorNewSchedule);
+            })
+            setTutorSchedule(tutorNewSchedule);
             setActive(false);
-        } catch (error) {
+            console.log(tutorNewSchedule);
+        }
+        catch (err) {
+            console.error();
             setActive(false);
-            console.log(error);
         }
     }
 
@@ -65,48 +103,38 @@ function ViewTutorSchedule() {
                                                         <h5 className="card-title fw-bold pb-1">SCHEDULE</h5>
                                                         <p className="card-text mb-0 pb-2">
                                                             Below is your schedule for the different days of the week.
-                                                            Select the days of the week in which you want to update your
-                                                            schedule for.
+                                                            You can customize your schedule however you like.
                                                     </p>
 
                                                         <div>
-                                                            <table class="table">
+                                                            <table className="table">
                                                                 <tbody>
                                                                     {tutorSchedule ?
-                                                                        tutorSchedule.map(schedule => (
+                                                                        tutorSchedule.map((schedule) => (
                                                                             <tr>
                                                                                 <td className="fw-lighter ps-5">{schedule.day_name}</td>
-                                                                                {schedule.schedule ?
-                                                                                    <td className="fw-lighter px-5">{schedule.schedule}</td>
-                                                                                    :
-                                                                                    <td className="fw-lighter px-5">Schedule not set yet.</td>
-                                                                                }
+
+                                                                                <td className="fw-lighter ps-5">{schedule.schedule}</td>
+
                                                                                 <td className="fw-lighter pe-5">
                                                                                     <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                                 </td>
                                                                             </tr>
                                                                         )) : null}
-                                                                    {/* <tr>
-                                                                        <td className="fw-lighter ps-5">Tuesday</td>
-                                                                        <td className="fw-lighter px-5">10:00 - 12:00, 18:00 - 22:00</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td className="fw-lighter ps-5">Wednesday</td>
-                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td className="fw-lighter ps-5">Thursday</td>
-                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
-                                                                        </td>
-                                                                    </tr>
+
+                                                                    {/* {tutorSchedule ?
+                                                                        tutorSchedule.forEach(schedule => (
+                                                                            < tr >
+                                                                                <td className="fw-lighter ps-5">{console.log(schedule)}</td>
+                                                                                <td className="fw-lighter ps-5"></td>
+                                                                                <td className="fw-lighter pe-5">
+                                                                                    <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
+                                                                                </td>
+                                                                            </tr>
+                                                                        )
+                                                                        ) :
+                                                                        null} */}
+                                                                    {/*
                                                                     <tr>
                                                                         <td className="fw-lighter ps-5">Friday</td>
                                                                         <td className="fw-lighter px-5">Schedule not set yet.</td>
@@ -150,7 +178,7 @@ function ViewTutorSchedule() {
                     </div>
                 </div>
             </LoadingOverlay>
-        </Formik>
+        </Formik >
     )
 }
 
