@@ -31,11 +31,11 @@ import ViewStudentProfile from './views/student/profile/viewStudentProfile';
  * Imports
  */
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStar, faSearch, faTimes, faSort, faEllipsisV, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faSearch, faTimes, faSort, faEllipsisV, faTimesCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 
-library.add(faStar, faSearch, faTimes, faSort, faEllipsisV, faTimesCircle);
+library.add(faStar, faSearch, faTimes, faSort, faEllipsisV, faTimesCircle, faPlusCircle);
 
 function App() {
   return (
@@ -62,7 +62,7 @@ function App() {
           <Route path="/tutor/advertisements/view" element={<ViewTutorAdvertisement/>} />
           <Route path="/tutor/requests/view" element={<ViewTutoringRequests/>} />
           <Route path="/tutor/schedule/view" element={<ViewTutorSchedule/>} />
-          <Route path="/tutor/schedule/create" element={<CreateTutorSchedule/>} />
+          <Route path="/tutor/schedule/create/:dayId" element={<CreateTutorSchedule/>} />
           
 
 

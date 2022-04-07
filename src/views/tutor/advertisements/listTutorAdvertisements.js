@@ -2,14 +2,13 @@ import Navbar from '../../../components/tutor/tutorNavbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
 import React, { useEffect } from 'react'
-import PlaceholderImage from '../../../assets/images/pink.jpg'
-import PlaceholderImage2 from '../../../assets/images/Hero-Image.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TutorAdvertisementService from '../../../services/tutor/TutorAdvertisementService'
 import { Link } from 'react-router-dom'
 
 function ListTutorAdvertisements() {
     const [isActive, setActive] = React.useState(false);
-    const [tutorAdvertisement, setTutorAdvertisement] = React.useState([]);
+    const [tutorAdvertisement, setTutorAdvertisement] = React.useState();
 
     useEffect(() => {
         getTutorAdvertisements();
@@ -21,9 +20,8 @@ function ListTutorAdvertisements() {
 
             const response = await TutorAdvertisementService.list(1);
 
-            console.log(response.data.length);
-
-            setTutorAdvertisement(response.data);
+            if (response.data.length > 0)
+                setTutorAdvertisement(response.data);
 
             setActive(false);
         } catch (error) {
@@ -49,19 +47,27 @@ function ListTutorAdvertisements() {
 
                 <hr className="my-0 py-0" />
 
-                <div style={{ minHeight: "100vh", backgroundColor: "black" }} className="col justify-content-md-center px-0 d-flex align-items-center">
+                <div style={{ minHeight: "100vh", backgroundColor: "black" }} className="col justify-content-md-center px-0 align-items-center">
                     <br />
-                    {/* <div className="row mx-auto">
-                        <div className="col-4 offset-md-2">
-                            <h6 className="ps-md-3 pb-2 text-white text-secondary pt-3">
-                                ALL ADVERTISEMENTS
+
+                    <div className="row">
+                        <div className="col-9 mx-auto">
+                            <div className="col-6 d-inline-block">
+                                <h6 className="text-white text-secondary">
+                                    ALL ADVERTISEMENTS
                             </h6>
+                            </div>
+
+                            <div className="col-6 float-end">
+                                <Link to="/tutor/advertisements/create">
+                                    <FontAwesomeIcon icon="plus-circle"
+                                        className="hoverable mr-auto" color="white" size="lg" />
+                                </Link>
+                            </div>
                         </div>
-                        <div className="col-4">
-                            <Link to="/tutor/advertisements/create"
-                                className="btn btn-primary">CREATE ADVERTISEMENT</Link>
-                        </div>
-                    </div> */}
+                    </div>
+
+                    <br />
 
                     {tutorAdvertisement ?
                         tutorAdvertisement.map(advertisement => (
@@ -89,9 +95,29 @@ function ListTutorAdvertisements() {
                                     </div>
                                 </div>
                             </div>
-                        )) : <h1>
-                            No data to display
-                            </h1>}
+                        )) : <div className="row grid-container">
+                            <div className="col-5 mx-auto">
+                                <div className="card mb-3 h-100">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="card-body">
+                                                <h5 className="card-title fw-bold text-green pb-1">No Advertisements Yet</h5>
+                                                <div className="card-text mb-0 pb-2 fw-lighter mb-2"
+                                                >
+                                                    You do not have any advertisements to show at the moment.
+                                                    Let us start by creating your first advertisement.
+                                            </div>
+                                                <div className="text-center" >
+                                                    <Link to="/tutor/advertisements/create"
+                                                        className="btn btn-primary">CREATE ADVERTISEMENT</Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </LoadingOverlay>

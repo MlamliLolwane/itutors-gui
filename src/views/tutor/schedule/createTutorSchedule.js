@@ -1,7 +1,7 @@
 import Navbar from '../../../components/tutor/tutorNavbar'
 import LoadingOverlay from 'react-loading-overlay-ts'
 import HashLoader from 'react-spinners/HashLoader'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams  } from 'react-router-dom'
 import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -13,6 +13,7 @@ function CreateTutorSchedule() {
     const [formValues, setFormValues] = React.useState([{ start_time: "", end_time: "" }])
     const [col, setCol] = React.useState("col-0")
     const navigate = useNavigate();
+    const params = useParams();
 
     //Create dynamic form 
     let addFormFields = () => {
@@ -46,7 +47,7 @@ function CreateTutorSchedule() {
 
             await TutorScheduleService.store({
                 tutor_id: 1,
-                day_id: 2,
+                day_id: params.dayId,
                 schedule: JSON.stringify(formValues)
             })
 

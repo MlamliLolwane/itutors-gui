@@ -235,6 +235,11 @@ select option {
   border: transparent !important
 }
 
+.transparent-button{
+  background-color: transparent !important;
+  border: transparent !important;
+}
+
 .hoverable {
   cursor: pointer;
 }

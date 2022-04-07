@@ -10,8 +10,9 @@ import { parse } from '@fortawesome/fontawesome-svg-core'
 
 function ViewTutorSchedule() {
     const [isActive, setActive] = React.useState(false);
-    const [tutorSchedule, setTutorSchedule] = React.useState([]);
+    const [tutorSchedule, setTutorSchedule] = React.useState();
     const [schedule, setSchedule] = React.useState([]);
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
     useEffect(() => {
         getTutorSchedule();
@@ -42,24 +43,19 @@ function ViewTutorSchedule() {
                     daySchedule = "Schedule not set yet";
                 }
 
-                if(daySchedule != "Schedule not set yet")
-                {
-                    scheduleObject.schedule = daySchedule.substring(0, daySchedule.length -2);
+                if (daySchedule != "Schedule not set yet") {
+                    scheduleObject.schedule = daySchedule.substring(0, daySchedule.length - 2);
                 }
-                else{
+                else {
                     scheduleObject.schedule = daySchedule;
                 }
-                
-                //console.log(scheduleObject)
-
-                //The following line of code only appends the last values  of the object (Sunday)
 
                 tutorNewSchedule.push(JSON.parse(JSON.stringify(scheduleObject)));
-                // console.log(tutorNewSchedule);
             })
-            setTutorSchedule(tutorNewSchedule);
+            if (response.data.length > 0)
+                setTutorSchedule(tutorNewSchedule);
+
             setActive(false);
-            console.log(tutorNewSchedule);
         }
         catch (err) {
             console.error();
@@ -105,7 +101,6 @@ function ViewTutorSchedule() {
                                                             Below is your schedule for the different days of the week.
                                                             You can customize your schedule however you like.
                                                     </p>
-
                                                         <div>
                                                             <table className="table">
                                                                 <tbody>
@@ -117,53 +112,42 @@ function ViewTutorSchedule() {
                                                                                 <td className="fw-lighter ps-5">{schedule.schedule}</td>
 
                                                                                 <td className="fw-lighter pe-5">
-                                                                                    <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
+                                                                                <li style={{listStyleType: "none"}}>
+                                                                                        <button id="navbarDropdown" type="button" className="transparent-button" 
+                                                                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
+                                                                                        </button>
+                                                                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                                            <li><Link to="/tutor/schedule/update" className="dropdown-item" >Update Schedule</Link></li>
+                                                                                            <li><Link to="/tutor/schedule/delete" className="dropdown-item" >Delete Schedule</Link></li>
+                                                                                        </ul>
+                                                                                    </li>
                                                                                 </td>
                                                                             </tr>
-                                                                        )) : null}
+                                                                        )) :
+                                                                        daysOfWeek.map((day, index) => (
+                                                                            <tr>
+                                                                                <td className="fw-lighter ps-5">{day}</td>
 
-                                                                    {/* {tutorSchedule ?
-                                                                        tutorSchedule.forEach(schedule => (
-                                                                            < tr >
-                                                                                <td className="fw-lighter ps-5">{console.log(schedule)}</td>
-                                                                                <td className="fw-lighter ps-5"></td>
+                                                                                <td className="fw-lighter ps-5">Schedule Not Set Yet</td>
+
                                                                                 <td className="fw-lighter pe-5">
-                                                                                    <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
+                                                                                    <li style={{listStyleType: "none"}}>
+                                                                                        <button id="navbarDropdown" type="button" className="transparent-button" 
+                                                                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
+                                                                                        </button>
+                                                                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                                            <li><Link to={`/tutor/schedule/create/${index + 1}`} className="dropdown-item" >
+                                                                                                Create Schedule</Link></li>
+                                                                                        </ul>
+                                                                                    </li>
                                                                                 </td>
                                                                             </tr>
-                                                                        )
-                                                                        ) :
-                                                                        null} */}
-                                                                    {/*
-                                                                    <tr>
-                                                                        <td className="fw-lighter ps-5">Friday</td>
-                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td className="fw-lighter ps-5">Saturday</td>
-                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td className="fw-lighter ps-5">Sunday</td>
-                                                                        <td className="fw-lighter px-5">Schedule not set yet.</td>
-                                                                        <td className="fw-lighter pe-5">
-                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
-                                                                        </td>
-                                                                    </tr> */}
-                                                                    {/* <tr>
-                                                                        <td className="fw-lighter px-5 mb-0 py-0" colspan="4">
-                                                                            <div className="text-center" >
-                                                                                <Link to="/tutor/schedule/create"
-                                                                                    className="btn btn-primary">UPDATE SCHEDULE</Link>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr> */}
+                                                                        ))
+                                                                    }
+
+
                                                                 </tbody>
                                                             </table>
                                                         </div>
