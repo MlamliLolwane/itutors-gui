@@ -104,43 +104,30 @@ function ViewTutorSchedule() {
                                                         <div>
                                                             <table className="table">
                                                                 <tbody>
-                                                                    {tutorSchedule ?
-                                                                        tutorSchedule.map((schedule) => (
+                                                                    {tutorSchedule &&
+                                                                        tutorSchedule.map((schedule, index) => (
                                                                             <tr>
                                                                                 <td className="fw-lighter ps-5">{schedule.day_name}</td>
 
                                                                                 <td className="fw-lighter ps-5">{schedule.schedule}</td>
 
                                                                                 <td className="fw-lighter pe-5">
-                                                                                <li style={{listStyleType: "none"}}>
-                                                                                        <button id="navbarDropdown" type="button" className="transparent-button" 
-                                                                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
+                                                                                    <li style={{ listStyleType: "none" }}>
+                                                                                        <button id="navbarDropdown" type="button" className="transparent-button"
+                                                                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                            <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
                                                                                         </button>
-                                                                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                                                            <li><Link to="/tutor/schedule/update" className="dropdown-item" >Update Schedule</Link></li>
-                                                                                            <li><Link to="/tutor/schedule/delete" className="dropdown-item" >Delete Schedule</Link></li>
-                                                                                        </ul>
-                                                                                    </li>
-                                                                                </td>
-                                                                            </tr>
-                                                                        )) :
-                                                                        daysOfWeek.map((day, index) => (
-                                                                            <tr>
-                                                                                <td className="fw-lighter ps-5">{day}</td>
-
-                                                                                <td className="fw-lighter ps-5">Schedule Not Set Yet</td>
-
-                                                                                <td className="fw-lighter pe-5">
-                                                                                    <li style={{listStyleType: "none"}}>
-                                                                                        <button id="navbarDropdown" type="button" className="transparent-button" 
-                                                                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                        <FontAwesomeIcon icon="ellipsis-v" className="hoverable" color="grey" />
-                                                                                        </button>
-                                                                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                                                            <li><Link to={`/tutor/schedule/create/${index + 1}`} className="dropdown-item" >
-                                                                                                Create Schedule</Link></li>
-                                                                                        </ul>
+                                                                                        {schedule.schedule != "Schedule not set yet" ?
+                                                                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                                                <li><Link to="/tutor/schedule/update" className="dropdown-item" >Update Schedule</Link></li>
+                                                                                                <li><Link to="/tutor/schedule/delete" className="dropdown-item" >Delete Schedule</Link></li>
+                                                                                            </ul>
+                                                                                            :
+                                                                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                                                <li><Link to={`/tutor/schedule/create/${index + 1}`} className="dropdown-item" >
+                                                                                                    Create Schedule</Link></li>
+                                                                                            </ul>
+                                                                                        }
                                                                                     </li>
                                                                                 </td>
                                                                             </tr>
